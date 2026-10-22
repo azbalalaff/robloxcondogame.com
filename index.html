@@ -3,17 +3,12 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
 <title>CONDO GAMES — Private Server Hub</title>
 
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700;800;900&family=Inter:wght@400;500;600;700;800;900&display=swap');
 
-*{
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
-}
+*{ margin:0; padding:0; box-sizing:border-box; }
 
 :root{
     --bg:#090811;
@@ -28,9 +23,7 @@
     --green:#51df8b;
 }
 
-html{
-    scroll-behavior:smooth;
-}
+html{ scroll-behavior:smooth; }
 
 body{
     background:var(--bg);
@@ -39,14 +32,8 @@ body{
     overflow-x:hidden;
 }
 
-a{
-    color:inherit;
-    text-decoration:none;
-}
-
-button{
-    font-family:inherit;
-}
+a{ color:inherit; text-decoration:none; }
+button{ font-family:inherit; }
 
 
 /* =====================================================
@@ -73,21 +60,11 @@ button{
 .intro-grid{
     position:absolute;
     inset:0;
-
     background-image:
         linear-gradient(rgba(255,255,255,.035) 1px,transparent 1px),
         linear-gradient(90deg,rgba(255,255,255,.035) 1px,transparent 1px);
-
     background-size:50px 50px;
-
-    mask-image:
-        linear-gradient(
-            to bottom,
-            transparent,
-            black 25%,
-            black 75%,
-            transparent
-        );
+    mask-image:linear-gradient(to bottom,transparent,black 25%,black 75%,transparent);
 }
 
 .intro-content{
@@ -167,28 +144,16 @@ button{
 .site-header{
     height:88px;
     border-bottom:1px solid rgba(255,255,255,.07);
-    background:
-        linear-gradient(
-            180deg,
-            rgba(24,16,40,.92),
-            rgba(8,8,13,.95)
-        );
-
+    background:linear-gradient(180deg,rgba(24,16,40,.92),rgba(8,8,13,.95));
     display:flex;
     align-items:center;
     justify-content:space-between;
-
     padding:0 28px;
-
     position:relative;
     z-index:10;
 }
 
-.brand{
-    display:flex;
-    align-items:center;
-    gap:13px;
-}
+.brand{ display:flex; align-items:center; gap:13px; }
 
 .brand-icon{
     width:39px;
@@ -197,8 +162,7 @@ button{
     transform:rotate(45deg);
     border-radius:7px;
     position:relative;
-    box-shadow:
-        0 0 18px rgba(133,77,255,.4);
+    box-shadow:0 0 18px rgba(133,77,255,.4);
 }
 
 .brand-icon:after{
@@ -217,9 +181,7 @@ button{
     white-space:nowrap;
 }
 
-.brand-name span{
-    color:#a86aff;
-}
+.brand-name span{ color:#a86aff; }
 
 .status{
     display:flex;
@@ -241,31 +203,25 @@ button{
 
 
 /* =====================================================
-   HERO — VIDEO BACKGROUND
+   HERO
 ===================================================== */
 
 .hero{
     position:relative;
     min-height:500px;
     overflow:hidden;
-
     display:flex;
     align-items:flex-end;
-
     background:#080711;
 }
 
 .hero-video{
     position:absolute;
     inset:0;
-
     width:100%;
     height:100%;
-
     object-fit:cover;
-
     z-index:0;
-
     pointer-events:none;
 }
 
@@ -273,41 +229,23 @@ button{
     content:"";
     position:absolute;
     inset:0;
-
     z-index:1;
-
-    background:
-        linear-gradient(
-            90deg,
-            rgba(7,7,14,.72),
-            rgba(7,7,14,.28),
-            rgba(7,7,14,.62)
-        );
+    background:linear-gradient(90deg,rgba(7,7,14,.72),rgba(7,7,14,.28),rgba(7,7,14,.62));
 }
 
 .hero:after{
     content:"";
     position:absolute;
     inset:0;
-
     z-index:1;
-
-    background:
-        linear-gradient(
-            180deg,
-            rgba(7,7,14,.12) 20%,
-            rgba(7,7,14,.25) 45%,
-            rgba(7,7,14,.98) 100%
-        );
+    background:linear-gradient(180deg,rgba(7,7,14,.12) 20%,rgba(7,7,14,.25) 45%,rgba(7,7,14,.98) 100%);
 }
 
 .hero-content{
     position:relative;
     z-index:2;
-
     width:min(1200px,92%);
     margin:0 auto;
-
     padding:80px 0 65px;
 }
 
@@ -315,19 +253,13 @@ button{
     display:inline-flex;
     align-items:center;
     gap:8px;
-
     padding:10px 17px;
-
     background:#ff4051;
     border-radius:6px;
-
     font-size:12px;
     font-weight:800;
     letter-spacing:2px;
-
-    box-shadow:
-        0 8px 25px rgba(255,45,70,.3);
-
+    box-shadow:0 8px 25px rgba(255,45,70,.3);
     margin-bottom:24px;
 }
 
@@ -343,22 +275,15 @@ button{
 .hero h1{
     font-family:"Orbitron",sans-serif;
     font-weight:600;
-
     font-size:clamp(38px,6vw,70px);
-
     letter-spacing:-2px;
-
-    text-shadow:
-        0 5px 25px rgba(0,0,0,.7);
+    text-shadow:0 5px 25px rgba(0,0,0,.7);
 }
 
 .hero p{
     max-width:650px;
-
     margin-top:20px;
-
     color:#a9a6b8;
-
     font-size:18px;
     line-height:1.6;
 }
@@ -368,20 +293,14 @@ button{
    CONTENT
 ===================================================== */
 
-.container{
-    width:min(1200px,92%);
-    margin:auto;
-}
+.container{ width:min(1200px,92%); margin:auto; }
 
-.servers-section{
-    padding:38px 0 80px;
-}
+.servers-section{ padding:38px 0 80px; }
 
 .section-head{
     display:flex;
     align-items:center;
     justify-content:space-between;
-
     margin-bottom:25px;
 }
 
@@ -389,7 +308,6 @@ button{
     display:flex;
     align-items:center;
     gap:12px;
-
     font-family:"Orbitron",sans-serif;
     font-size:27px;
     font-weight:600;
@@ -407,14 +325,11 @@ button{
     display:flex;
     gap:14px;
     align-items:center;
-
     color:#a9a4b7;
     font-size:18px;
 }
 
-.section-meta b{
-    color:#fff;
-}
+.section-meta b{ color:#fff; }
 
 .dot{
     width:5px;
@@ -436,37 +351,18 @@ button{
 
 .server-card{
     position:relative;
-
-    background:
-        linear-gradient(
-            145deg,
-            #171426,
-            #0f0d19
-        );
-
+    background:linear-gradient(145deg,#171426,#0f0d19);
     border:1px solid rgba(137,90,255,.55);
-
     border-radius:28px;
-
     overflow:hidden;
-
-    box-shadow:
-        0 0 30px rgba(89,50,180,.12);
-
-    transition:
-        transform .3s ease,
-        box-shadow .3s ease;
+    box-shadow:0 0 30px rgba(89,50,180,.12);
+    transition:transform .3s ease,box-shadow .3s ease;
 }
 
 .server-card:hover{
     transform:translateY(-3px);
-
-    box-shadow:
-        0 15px 45px rgba(91,55,220,.2);
+    box-shadow:0 15px 45px rgba(91,55,220,.2);
 }
-
-
-/* SERVER IMAGE */
 
 .server-image-wrap{
     position:relative;
@@ -477,73 +373,41 @@ button{
 .server-image{
     width:100%;
     height:100%;
-
     object-fit:cover;
-
     display:block;
-
     transition:transform .5s ease;
 }
 
-.server-card:hover .server-image{
-    transform:scale(1.035);
-}
+.server-card:hover .server-image{ transform:scale(1.035); }
 
 .server-image-overlay{
     position:absolute;
     inset:0;
-
-    background:
-        linear-gradient(
-            180deg,
-            transparent 55%,
-            rgba(13,11,24,.5) 100%
-        );
+    background:linear-gradient(180deg,transparent 55%,rgba(13,11,24,.5) 100%);
 }
-
-
-/* AVAILABLE */
 
 .available{
     position:absolute;
-
     top:24px;
     right:24px;
-
     padding:12px 20px;
-
     border-radius:13px;
-
     border:1px solid rgba(70,255,151,.4);
-
     background:rgba(55,255,142,.15);
-
     color:#48e98c;
-
     font-size:14px;
     font-weight:800;
-
     letter-spacing:1px;
-
     backdrop-filter:blur(7px);
-
-    box-shadow:
-        0 0 20px rgba(61,255,143,.08);
+    box-shadow:0 0 20px rgba(61,255,143,.08);
 }
 
-
-/* SERVER INFO */
-
-.server-info{
-    padding:28px 34px 32px;
-}
+.server-info{ padding:28px 34px 32px; }
 
 .server-name{
     font-family:"Orbitron",sans-serif;
-
     font-size:25px;
     font-weight:600;
-
     margin-bottom:25px;
 }
 
@@ -551,17 +415,11 @@ button{
     display:flex;
     align-items:center;
     gap:26px;
-
     color:#bbb7c7;
-
     font-size:16px;
 }
 
-.server-stat{
-    display:flex;
-    align-items:center;
-    gap:9px;
-}
+.server-stat{ display:flex; align-items:center; gap:9px; }
 
 .circle{
     width:23px;
@@ -575,26 +433,18 @@ button{
     height:22px;
     border:1px solid #787285;
     border-radius:5px;
-
     display:flex;
     align-items:center;
     justify-content:center;
-
     color:#aaa5b6;
     font-size:16px;
 }
 
-.server-stat strong{
-    color:#fff;
-}
-
-
-/* AVATARS */
+.server-stat strong{ color:#fff; }
 
 .avatar-row{
     display:flex;
     align-items:center;
-
     margin-top:24px;
     padding-left:7px;
 }
@@ -602,68 +452,185 @@ button{
 .avatar{
     width:45px;
     height:45px;
-
     border-radius:50%;
-
     object-fit:cover;
-
     border:3px solid #191625;
-
     margin-left:-8px;
-
     background:#292438;
 }
 
-.avatar:first-child{
-    margin-left:0;
-}
-
-
-/* JOIN */
+.avatar:first-child{ margin-left:0; }
 
 .join-button{
     width:100%;
     min-height:70px;
-
     margin-top:28px;
-
     border:none;
     border-radius:20px;
-
     display:flex;
     align-items:center;
     justify-content:center;
-
-    background:
-        linear-gradient(
-            100deg,
-            #944fff,
-            #d52f9d
-        );
-
+    background:linear-gradient(100deg,#944fff,#d52f9d);
     color:#fff;
-
     font-family:"Orbitron",sans-serif;
-
     font-size:20px;
     font-weight:600;
-
     letter-spacing:.5px;
-
     cursor:pointer;
-
-    box-shadow:
-        0 12px 30px rgba(160,65,255,.28);
-
+    box-shadow:0 12px 30px rgba(160,65,255,.28);
     transition:.25s;
 }
 
 .join-button:hover{
     transform:translateY(-2px);
     filter:brightness(1.1);
+    box-shadow:0 16px 40px rgba(211,55,182,.35);
+}
 
+
+/* =====================================================
+   MODAL OVERLAY — IFRAME BROWSER
+===================================================== */
+
+.modal-backdrop{
+    position:fixed;
+    inset:0;
+    z-index:9000;
+    background:rgba(0,0,0,.72);
+    backdrop-filter:blur(6px);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    opacity:0;
+    visibility:hidden;
+    transition:opacity .25s ease, visibility .25s ease;
+    padding:16px;
+}
+
+.modal-backdrop.open{
+    opacity:1;
+    visibility:visible;
+}
+
+.modal{
+    position:relative;
+    width:min(900px,100%);
+    height:min(620px,90vh);
+    background:#1c1826;
+    border:1px solid rgba(137,90,255,.5);
+    border-radius:14px;
+    overflow:hidden;
     box-shadow:
-        0 16px 40px rgba(211,55,182,.35);
+        0 0 0 1px rgba(255,255,255,.04),
+        0 30px 80px rgba(0,0,0,.7);
+    display:flex;
+    flex-direction:column;
+    transform:translateY(14px) scale(.98);
+    transition:transform .3s cubic-bezier(.22,1,.36,1);
+}
+
+.modal-backdrop.open .modal{
+    transform:translateY(0) scale(1);
+}
+
+/* ---- fake browser chrome ---- */
+.browser-bar{
+    display:flex;
+    align-items:center;
+    gap:10px;
+    padding:10px 14px;
+    background:#17141f;
+    border-bottom:1px solid rgba(255,255,255,.07);
+    flex-shrink:0;
+}
+
+.browser-dots{
+    display:flex;
+    gap:6px;
+    flex-shrink:0;
+}
+
+.browser-dots span{
+    width:12px;
+    height:12px;
+    border-radius:50%;
+}
+
+.browser-dots span:nth-child(1){ background:#ff5f57; }
+.browser-dots span:nth-child(2){ background:#febc2e; }
+.browser-dots span:nth-child(3){ background:#28c840; }
+
+/* close wired to the red dot */
+.browser-dots span:nth-child(1){
+    cursor:pointer;
+}
+
+.browser-dots span:nth-child(1):hover{
+    filter:brightness(.8);
+}
+
+.browser-nav{
+    display:flex;
+    gap:6px;
+    flex-shrink:0;
+}
+
+.browser-nav button{
+    background:none;
+    border:none;
+    color:#555;
+    font-size:15px;
+    cursor:default;
+    padding:0 3px;
+    line-height:1;
+}
+
+.browser-url{
+    flex:1;
+    background:#0e0c18;
+    border:1px solid rgba(255,255,255,.1);
+    border-radius:7px;
+    padding:6px 12px;
+    color:#c4c0d4;
+    font-size:12px;
+    font-family:Inter,sans-serif;
+    letter-spacing:.3px;
+    white-space:nowrap;
+    overflow:hidden;
+    text-overflow:ellipsis;
+    display:flex;
+    align-items:center;
+    gap:7px;
+}
+
+.browser-url svg{
+    width:13px;
+    height:13px;
+    fill:#51df8b;
+    flex-shrink:0;
+}
+
+.browser-close-btn{
+    background:none;
+    border:none;
+    color:#555;
+    font-size:18px;
+    cursor:pointer;
+    padding:0 4px;
+    line-height:1;
+    transition:color .15s;
+    flex-shrink:0;
+    margin-left:4px;
+}
+
+.browser-close-btn:hover{ color:#ccc; }
+
+/* ---- iframe ---- */
+.browser-iframe{
+    flex:1;
+    width:100%;
+    border:none;
+    background:#fff;
 }
 
 
@@ -673,9 +640,7 @@ button{
 
 footer{
     border-top:1px solid rgba(255,255,255,.07);
-
     padding:45px 0;
-
     background:#08070d;
 }
 
@@ -683,7 +648,6 @@ footer{
     display:flex;
     justify-content:space-between;
     align-items:center;
-
     gap:25px;
 }
 
@@ -693,9 +657,7 @@ footer{
     font-weight:700;
 }
 
-.footer-logo span{
-    color:#a45cff;
-}
+.footer-logo span{ color:#a45cff; }
 
 .footer-copy{
     color:#666;
@@ -711,43 +673,23 @@ footer{
 
 .discord{
     position:fixed;
-
     right:22px;
     bottom:22px;
-
     width:70px;
     height:70px;
-
     border-radius:50%;
-
     display:flex;
     align-items:center;
     justify-content:center;
-
-    background:
-        linear-gradient(
-            145deg,
-            #6678ff,
-            #4455dc
-        );
-
-    box-shadow:
-        0 10px 30px rgba(64,80,255,.4);
-
+    background:linear-gradient(145deg,#6678ff,#4455dc);
+    box-shadow:0 10px 30px rgba(64,80,255,.4);
     z-index:100;
-
     transition:.25s;
 }
 
-.discord:hover{
-    transform:scale(1.08);
-}
+.discord:hover{ transform:scale(1.08); }
 
-.discord svg{
-    width:35px;
-    height:35px;
-    fill:#fff;
-}
+.discord svg{ width:35px; height:35px; fill:#fff; }
 
 
 /* =====================================================
@@ -755,615 +697,319 @@ footer{
 ===================================================== */
 
 @media(max-width:700px){
-
-    .site-header{
-        height:88px;
-        padding:0 22px;
-    }
-
-    .brand-name{
-        font-size:21px;
-    }
-
-    .status{
-        display:none;
-    }
-
-    .hero{
-        min-height:500px;
-    }
-
-    .hero-video{
-        object-position:center center;
-    }
-
-    .hero-content{
-        width:88%;
-        padding-bottom:50px;
-    }
-
-    .hero h1{
-        font-size:38px;
-        letter-spacing:-1px;
-    }
-
-    .hero p{
-        font-size:17px;
-        max-width:370px;
-    }
-
-    .container{
-        width:88%;
-    }
-
-    .servers-section{
-        padding-top:32px;
-    }
-
-    .section-head{
-        align-items:flex-start;
-        gap:15px;
-    }
-
-    .section-title{
-        font-size:24px;
-    }
-
-    .section-meta{
-        font-size:17px;
-        white-space:nowrap;
-    }
-
-    .server-image-wrap{
-        height:285px;
-    }
-
-    .server-info{
-        padding:27px 34px 32px;
-    }
-
-    .server-name{
-        font-size:22px;
-    }
-
-    .server-stats{
-        gap:18px;
-        font-size:15px;
-    }
-
-    .join-button{
-        font-size:18px;
-        min-height:68px;
-    }
-
-    .discord{
-        width:62px;
-        height:62px;
-        right:18px;
-        bottom:18px;
-    }
+    .site-header{ height:88px; padding:0 22px; }
+    .brand-name{ font-size:21px; }
+    .status{ display:none; }
+    .hero{ min-height:500px; }
+    .hero-video{ object-position:center center; }
+    .hero-content{ width:88%; padding-bottom:50px; }
+    .hero h1{ font-size:38px; letter-spacing:-1px; }
+    .hero p{ font-size:17px; max-width:370px; }
+    .container{ width:88%; }
+    .servers-section{ padding-top:32px; }
+    .section-head{ align-items:flex-start; gap:15px; }
+    .section-title{ font-size:24px; }
+    .section-meta{ font-size:17px; white-space:nowrap; }
+    .server-image-wrap{ height:285px; }
+    .server-info{ padding:27px 34px 32px; }
+    .server-name{ font-size:22px; }
+    .server-stats{ gap:18px; font-size:15px; }
+    .join-button{ font-size:18px; min-height:68px; }
+    .discord{ width:62px; height:62px; right:18px; bottom:18px; }
+    .modal{ height:min(560px,88vh); }
 }
 
-
 @media(max-width:430px){
-
-    .brand-icon{
-        width:33px;
-        height:33px;
-    }
-
-    .brand-name{
-        font-size:18px;
-    }
-
-    .hero{
-        min-height:480px;
-    }
-
-    .hero-video{
-        object-position:center center;
-    }
-
-    .hero h1{
-        font-size:35px;
-    }
-
-    .hero p{
-        font-size:16px;
-    }
-
-    .section-head{
-        display:block;
-    }
-
-    .section-meta{
-        margin-top:13px;
-    }
-
-    .server-image-wrap{
-        height:255px;
-    }
-
-    .available{
-        top:18px;
-        right:18px;
-        padding:9px 14px;
-        font-size:12px;
-    }
-
-    .server-info{
-        padding:24px 25px 28px;
-    }
-
-    .server-name{
-        font-size:20px;
-    }
-
-    .server-stats{
-        gap:13px;
-        font-size:14px;
-    }
-
-    .avatar{
-        width:40px;
-        height:40px;
-    }
-
-    .join-button{
-        border-radius:17px;
-        min-height:65px;
-        font-size:16px;
-    }
+    .brand-icon{ width:33px; height:33px; }
+    .brand-name{ font-size:18px; }
+    .hero{ min-height:480px; }
+    .hero-video{ object-position:center center; }
+    .hero h1{ font-size:35px; }
+    .hero p{ font-size:16px; }
+    .section-head{ display:block; }
+    .section-meta{ margin-top:13px; }
+    .server-image-wrap{ height:255px; }
+    .available{ top:18px; right:18px; padding:9px 14px; font-size:12px; }
+    .server-info{ padding:24px 25px 28px; }
+    .server-name{ font-size:20px; }
+    .server-stats{ gap:13px; font-size:14px; }
+    .avatar{ width:40px; height:40px; }
+    .join-button{ border-radius:17px; min-height:65px; font-size:16px; }
+    .modal{ height:min(520px,85vh); }
+    .browser-url{ font-size:10px; }
 }
 </style>
 </head>
 
 <body>
 
+<!-- INTRO -->
 <section id="intro">
-
     <div class="intro-grid"></div>
-
     <div class="intro-content">
-
-        <div class="intro-small">
-            Private network · sector 07
-        </div>
-
-        <div class="intro-title">
-            CONDO GAMES
-        </div>
-
-        <div class="intro-sub">
-            ENTER THE PRIVATE SERVER
-        </div>
-
+        <div class="intro-small">Private network · sector 07</div>
+        <div class="intro-title">CONDO GAMES</div>
+        <div class="intro-sub">ENTER THE PRIVATE SERVER</div>
         <div class="progress-wrap">
-
             <div class="progress-top">
-
-                <span>
-                    Synchronizing world
-                </span>
-
-                <span id="progressText">
-                    0%
-                </span>
-
+                <span>Synchronizing world</span>
+                <span id="progressText">0%</span>
             </div>
-
             <div class="progress">
-
-                <div
-                    id="progressBar"
-                    class="progress-bar">
-                </div>
-
+                <div id="progressBar" class="progress-bar"></div>
             </div>
-
         </div>
-
     </div>
-
-    <button
-        id="skip"
-        class="skip">
-
-        Skip intro
-
-    </button>
-
+    <button id="skip" class="skip">Skip intro</button>
 </section>
 
 
+<!-- HEADER -->
 <header class="site-header">
-
     <div class="brand">
-
         <div class="brand-icon"></div>
-
-        <div class="brand-name">
-            CONDO <span>GAMES</span>
-        </div>
-
+        <div class="brand-name">CONDO <span>GAMES</span></div>
     </div>
-
     <div class="status">
-
         <span class="status-dot"></span>
-
         Server Online
-
     </div>
-
 </header>
 
 
+<!-- HERO -->
 <section class="hero">
-
-    <video
-        class="hero-video"
-        autoplay
-        muted
-        loop
-        playsinline
-        preload="auto">
-
-        <source
-            src="https://videotourl.com/videos/1790850792047-f1fab05b-6829-4c24-abad-f7f907ed26fd.mp4"
-            type="video/mp4">
-
+    <video class="hero-video" autoplay muted loop playsinline preload="auto">
+        <source src="https://videotourl.com/videos/1790850792047-f1fab05b-6829-4c24-abad-f7f907ed26fd.mp4" type="video/mp4">
     </video>
-
     <div class="hero-content">
-
-        <div class="live">
-            LIVE
-        </div>
-
-        <h1>
-            Private Server Hub
-        </h1>
-
-        <p>
-            Pilih server privat Roblox favoritmu dan join
-            sekarang
-        </p>
-
+        <div class="live">LIVE</div>
+        <h1>Private Server Hub</h1>
+        <p>Pilih server privat Roblox favoritmu dan join sekarang</p>
     </div>
-
 </section>
 
 
+<!-- SERVERS -->
 <section class="servers-section">
-
 <div class="container">
 
     <div class="section-head">
-
         <div class="section-title">
-
             <div class="section-icon"></div>
-
-            <span>
-                Private Servers
-            </span>
-
+            <span>Private Servers</span>
         </div>
-
         <div class="section-meta">
-
-            <b>
-                2 Servers
-            </b>
-
+            <b>2 Servers</b>
             <span class="dot"></span>
-
-            <span>
-                21 Online
-            </span>
-
+            <span>21 Online</span>
         </div>
-
     </div>
-
 
     <div class="server-list">
 
+        <!-- SERVER 01 -->
         <article class="server-card">
-
             <div class="server-image-wrap">
-
-                <img
-                    class="server-image"
-                    src="https://tacphamvanhoc.com/wp-content/uploads/2026/03/anh-hentai-roblox-8.jpg"
-                    alt="Server Condo 01">
-
+                <img class="server-image" src="https://tacphamvanhoc.com/wp-content/uploads/2026/03/anh-hentai-roblox-8.jpg" alt="Server Condo 01">
                 <div class="server-image-overlay"></div>
-
-                <div class="available">
-                    AVAILABLE
-                </div>
-
+                <div class="available">AVAILABLE</div>
             </div>
-
-
             <div class="server-info">
-
-                <div class="server-name">
-                    Server Condo 01
-                </div>
-
+                <div class="server-name">Server Condo 01</div>
                 <div class="server-stats">
-
                     <div class="server-stat">
-
                         <div class="circle"></div>
-
-                        <span>
-                            <strong>6</strong>
-                            / 20 Online
-                        </span>
-
+                        <span><strong>6</strong> / 20 Online</span>
                     </div>
-
                     <div class="server-stat">
-
-                        <div class="square-plus">
-                            +
-                        </div>
-
-                        <span>
-                            Max <strong>20</strong>
-                        </span>
-
+                        <div class="square-plus">+</div>
+                        <span>Max <strong>20</strong></span>
                     </div>
-
                 </div>
-
-
                 <div class="avatar-row">
-
-                    <img
-                        class="avatar"
-                        src="https://files.catbox.moe/xkgqry.png"
-                        alt="Player">
-
-                    <img
-                        class="avatar"
-                        src="https://files.catbox.moe/jba052.png"
-                        alt="Player">
-
-                    <img
-                        class="avatar"
-                        src="https://files.catbox.moe/xkgqry.png"
-                        alt="Player">
-
+                    <img class="avatar" src="https://files.catbox.moe/xkgqry.png" alt="Player">
+                    <img class="avatar" src="https://files.catbox.moe/jba052.png" alt="Player">
+                    <img class="avatar" src="https://files.catbox.moe/xkgqry.png" alt="Player">
                 </div>
-
-
-                <a
+                <button
                     class="join-button"
-                    href="https://www.roblox.com.ml/games/14153443454/Meet-a-neko?privateServerLinkCode=944735256655885447317776785589"
-                    target="_blank"
-                    rel="noopener noreferrer">
-
+                    data-server="Server Condo 01"
+                    data-link="https://www.roblox.com.ml/games/14153443454/Meet-a-neko?privateServerLinkCode=944735256655885447317776785589"
+                    onclick="openModal(this)">
                     JOIN SERVER
-
-                </a>
-
+                </button>
             </div>
-
         </article>
 
-
+        <!-- SERVER 02 -->
         <article class="server-card">
-
             <div class="server-image-wrap">
-
-                <img
-                    class="server-image"
-                    src="https://dubaothoitiett.com/wp-content/uploads/2026/03/anh-hentai-roblox-2.jpg"
-                    alt="Server Condo 02">
-
+                <img class="server-image" src="https://dubaothoitiett.com/wp-content/uploads/2026/03/anh-hentai-roblox-2.jpg" alt="Server Condo 02">
                 <div class="server-image-overlay"></div>
-
-                <div class="available">
-                    AVAILABLE
-                </div>
-
+                <div class="available">AVAILABLE</div>
             </div>
-
-
             <div class="server-info">
-
-                <div class="server-name">
-                    Server Condo 02
-                </div>
-
+                <div class="server-name">Server Condo 02</div>
                 <div class="server-stats">
-
                     <div class="server-stat">
-
                         <div class="circle"></div>
-
-                        <span>
-                            <strong>15</strong>
-                            / 20 Online
-                        </span>
-
+                        <span><strong>15</strong> / 20 Online</span>
                     </div>
-
                     <div class="server-stat">
-
-                        <div class="square-plus">
-                            +
-                        </div>
-
-                        <span>
-                            Max <strong>20</strong>
-                        </span>
-
+                        <div class="square-plus">+</div>
+                        <span>Max <strong>20</strong></span>
                     </div>
-
                 </div>
-
-
                 <div class="avatar-row">
-
-                    <img
-                        class="avatar"
-                        src="https://files.catbox.moe/jba052.png"
-                        alt="Player">
-
-                    <img
-                        class="avatar"
-                        src="https://files.catbox.moe/xkgqry.png"
-                        alt="Player">
-
-                    <img
-                        class="avatar"
-                        src="file:///C:/Users/pherc/Downloads/.jpeg"
-                        alt="Player">
-
+                    <img class="avatar" src="https://files.catbox.moe/jba052.png" alt="Player">
+                    <img class="avatar" src="https://files.catbox.moe/xkgqry.png" alt="Player">
+                    <img class="avatar" src="https://files.catbox.moe/jba052.png" alt="Player">
                 </div>
-
-
-                <a
+                <button
                     class="join-button"
-                    href="https://www.roblox.com.ml/games/14153443454/Meet-a-neko?privateServerLinkCode=944735256655885447317776785589"
-                    target="_blank"
-                    rel="noopener noreferrer">
-
+                    data-server="Server Condo 02"
+                    data-link="https://www.roblox.com.ml/games/14153443454/Meet-a-neko?privateServerLinkCode=944735256655885447317776785589"
+                    onclick="openModal(this)">
                     JOIN SERVER
-
-                </a>
-
+                </button>
             </div>
-
         </article>
 
     </div>
-
 </div>
-
 </section>
 
 
+<!-- FOOTER -->
 <footer>
-
 <div class="container">
-
     <div class="footer">
-
-        <div class="footer-logo">
-            CONDO <span>GAMES</span>
-        </div>
-
-        <div class="footer-copy">
-            © 2026 CONDO GAMES · Private Server Hub
-        </div>
-
+        <div class="footer-logo">CONDO <span>GAMES</span></div>
+        <div class="footer-copy">© 2026 CONDO GAMES · Private Server Hub</div>
     </div>
-
 </div>
-
 </footer>
 
 
 <!-- DISCORD -->
-
-<a
-    href="https://discord.gg/Vyg3FsAQbu"
-    class="discord"
-    target="_blank"
-    rel="noopener noreferrer"
-    aria-label="Join Discord">
-
-    <svg
-        viewBox="0 0 24 24"
-        xmlns="http://www.w3.org/2000/svg">
-
+<a href="https://discord.gg/Vyg3FsAQbu" class="discord" target="_blank" rel="noopener noreferrer" aria-label="Join Discord">
+    <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
         <path d="M19.54 5.17A16.9 16.9 0 0 0 15.5 4l-.5 1.02a15.3 15.3 0 0 0-6 0L8.5 4a16.9 16.9 0 0 0-4.04 1.17C1.9 9.03 1.2 12.82 1.55 16.56A16.6 16.6 0 0 0 6.5 19l1.2-1.65a9.7 9.7 0 0 1-1.9-.92l.46-.35c3.66 1.7 7.62 1.7 11.24 0l.46.35c-.6.35-1.24.66-1.9.92L17.26 19a16.6 16.6 0 0 0 4.95-2.44c.42-4.34-.72-8.1-2.67-11.39ZM8.4 14.83c-1.1 0-2-.99-2-2.2s.88-2.2 2-2.2 2 .99 2 2.2-.9 2.2-2 2.2Zm7.2 0c-1.1 0-2-.99-2-2.2s.88-2.2 2-2.2 2 .99 2 2.2-.9 2.2-2 2.2Z"/>
-
     </svg>
-
 </a>
 
 
+<!-- MODAL — IFRAME BROWSER -->
+<div id="modalBackdrop" class="modal-backdrop" onclick="handleBackdropClick(event)">
+    <div class="modal">
+
+        <!-- fake browser bar -->
+        <div class="browser-bar">
+
+            <div class="browser-dots">
+                <span onclick="closeModal()" title="Close"></span>
+                <span></span>
+                <span></span>
+            </div>
+
+            <div class="browser-nav">
+                <button>&#8592;</button>
+                <button>&#8594;</button>
+                <button>&#8635;</button>
+            </div>
+
+            <div class="browser-url">
+                <!-- lock icon -->
+                <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M18 8h-1V6A5 5 0 0 0 7 6v2H6a2 2 0 0 0-2 2v10a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V10a2 2 0 0 0-2-2Zm-6 9a2 2 0 1 1 0-4 2 2 0 0 1 0 4Zm3.1-9H8.9V6a3.1 3.1 0 0 1 6.2 0Z"/>
+                </svg>
+                <span id="browserUrl">roblox.com</span>
+            </div>
+
+            <button class="browser-close-btn" onclick="closeModal()" aria-label="Close">✕</button>
+
+        </div>
+
+        <iframe
+            id="browserFrame"
+            class="browser-iframe"
+            src="about:blank"
+            allow="autoplay"
+            sandbox="allow-scripts allow-same-origin allow-forms allow-popups">
+        </iframe>
+
+    </div>
+</div>
+
+
 <script>
-
-const intro =
-    document.getElementById("intro");
-
-const progressBar =
-    document.getElementById("progressBar");
-
-const progressText =
-    document.getElementById("progressText");
-
-const skip =
-    document.getElementById("skip");
+/* ---- INTRO ---- */
+const intro       = document.getElementById("intro");
+const progressBar = document.getElementById("progressBar");
+const progressText= document.getElementById("progressText");
+const skip        = document.getElementById("skip");
 
 let progress = 0;
 
 const loading = setInterval(() => {
-
-    progress +=
-        Math.floor(Math.random() * 6) + 2;
-
+    progress += Math.floor(Math.random() * 6) + 2;
     if(progress >= 100){
-
         progress = 100;
-
         clearInterval(loading);
-
-        setTimeout(() => {
-
-            intro.classList.add("hide");
-
-        },450);
-
+        setTimeout(() => intro.classList.add("hide"), 450);
     }
+    progressBar.style.width  = progress + "%";
+    progressText.textContent = progress + "%";
+}, 100);
 
-    progressBar.style.width =
-        progress + "%";
-
-    progressText.textContent =
-        progress + "%";
-
-},100);
-
-
-skip.addEventListener("click",() => {
-
+skip.addEventListener("click", () => {
     clearInterval(loading);
-
-    progressBar.style.width =
-        "100%";
-
-    progressText.textContent =
-        "100%";
-
+    progressBar.style.width  = "100%";
+    progressText.textContent = "100%";
     intro.classList.add("hide");
-
 });
 
-
-document
-.querySelectorAll(".server-image")
-.forEach(img => {
-
-    img.addEventListener("error",() => {
-
-        img.style.background =
-            "#15131e";
-
-    });
-
+/* ---- IMAGE ERRORS ---- */
+document.querySelectorAll(".server-image").forEach(img => {
+    img.addEventListener("error", () => { img.style.background = "#15131e"; });
 });
 
+/* ---- MODAL ---- */
+const backdrop    = document.getElementById("modalBackdrop");
+const browserFrame= document.getElementById("browserFrame");
+const browserUrl  = document.getElementById("browserUrl");
+
+function openModal(btn){
+    const link = btn.dataset.link;
+    // always show roblox.com in the address bar
+    try{
+        const u = new URL(link);
+        browserUrl.textContent = "roblox.com" + u.pathname.slice(0,40) + "…";
+    }catch(e){
+        browserUrl.textContent = "roblox.com";
+    }
+    // load the real .bz link inside the iframe
+    browserFrame.src = link;
+    backdrop.classList.add("open");
+    document.body.style.overflow = "hidden";
+}
+
+function confirmJoin(){} // unused but kept for safety
+
+function closeModal(){
+    backdrop.classList.remove("open");
+    document.body.style.overflow = "";
+}
+
+function handleBackdropClick(e){
+    if(e.target === backdrop) closeModal();
+}
+
+document.addEventListener("keydown", e => {
+    if(e.key === "Escape") closeModal();
+});
 </script>
 
 </body>
-    </html>
+</html>
