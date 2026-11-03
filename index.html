@@ -2565,15 +2565,6 @@ document.addEventListener("keydown",function(e){
     // 1. Disable right-click
     document.addEventListener("contextmenu", function(e){
         e.preventDefault();
-        // Show a brief "protected" toast
-        var container = document.getElementById("toast-container");
-        if(container){
-            var t = document.createElement("div");
-            t.className = "toast";
-            t.innerHTML = '<span style="font-size:16px;">🔒</span><span><b style="color:#d8d4f0">Inspect Disabled</b> · Protected Content</span>';
-            container.appendChild(t);
-            setTimeout(function(){ t.classList.add("hide"); setTimeout(function(){ if(t.parentNode) t.parentNode.removeChild(t); },320); }, 2000);
-        }
     });
 
     // 2. Block devtools keyboard shortcuts
