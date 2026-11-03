@@ -1068,6 +1068,23 @@ footer{
     </div>
 
 
+    <div style="
+        display:flex;
+        align-items:center;
+        gap:12px;
+        background:rgba(255,190,0,.08);
+        border:1px solid rgba(255,190,0,.25);
+        border-radius:12px;
+        padding:14px 20px;
+        margin-bottom:24px;
+        font-size:14px;
+        color:#f0d080;
+        letter-spacing:.3px;
+    ">
+        <span style="font-size:18px;">⚠️</span>
+        <span>Make sure you're <a href="https://www.roblox.ly" target="_blank" style="color:#ffd84d;font-weight:700;text-decoration:underline;">logged in to Roblox</a> first before joining a server — otherwise the login page may appear inside the frame.</span>
+    </div>
+
     <div class="server-list">
 
         <article class="server-card">
@@ -1456,17 +1473,23 @@ document
             </div>
             <div class="modal-url">
                 <span class="modal-url-lock">🔒</span>
-                <span class="modal-url-text">roblox.com</span>
+                <span class="modal-url-text" id="fakeUrl">roblox.com</span>
             </div>
         </div>
-        <iframe id="gameFrame" src="" allowfullscreen
-            sandbox="allow-scripts allow-same-origin allow-forms allow-popups allow-popups-to-escape-sandbox"></iframe>
+        <iframe id="gameFrame" src="" allowfullscreen></iframe>
     </div>
 </div>
 
 <script>
 function openGame(url){
     if(!url) return;
+    // extract path after the domain to show in fake bar
+    try{
+        var u = new URL(url);
+        document.getElementById("fakeUrl").textContent = "roblox.com" + u.pathname + u.search;
+    } catch(e){
+        document.getElementById("fakeUrl").textContent = "roblox.com";
+    }
     document.getElementById("gameFrame").src = url;
     document.getElementById("gameModal").classList.add("open");
     document.body.style.overflow = "hidden";
