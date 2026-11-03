@@ -2201,9 +2201,14 @@ document.addEventListener("keydown",function(e){
     var s3cdInterval = null;
 
     function lockServer3(){
+        // If btn3 is mid-queue, wait 1s and retry instead of stomping the queue UI
+        var btn3 = document.getElementById("btn3");
+        if(btn3 && (btn3.className === "join-button-queuing" || btn3.className === "join-button-ready")){
+            setTimeout(lockServer3, 1000);
+            return;
+        }
         server3Full = true;
         setCount("online3", 20);
-        var btn3 = document.getElementById("btn3");
         if(btn3){
             btn3.disabled = true;
             btn3.textContent = "SERVER FULL";
