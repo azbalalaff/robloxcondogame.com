@@ -1340,7 +1340,7 @@ footer{
                 <img
                     class="server-image"
                     id="img3"
-                    src="https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/56be65cc-cebe-4c9b-8439-2debc14c4515/dio4yl6-174dc20c-6278-4675-ab7b-f43d3865865a.jpg/v1/fit/w_659,h_463,q_70,strp/r63_part_2_by_aceghavriel_dio4yl6-375w-2x.jpg?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7ImhlaWdodCI6Ijw9NDYzIiwicGF0aCI6Ii9mLzU2YmU2NWNjLWNlYmUtNGM5Yi04NDM5LTJkZWJjMTRjNDUxNS9kaW80eWw2LTE3NGRjMjBjLTYyNzgtNDY3NS1hYjdiLWY0M2QzODY1ODY1YS5qcGciLCJ3aWR0aCI6Ijw9NjU5In1dXSwiYXVkIjpbInVybjpzZXJ2aWNlOmltYWdlLm9wZXJhdGlvbnMiXX0.h4fXeHcZ5SDwvODBTqp9NPS87ktkgbp8oFW5nQX9jZg"
+                    src="https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/56be65cc-cebe-4c9b-8439-2debc14c4515/dhzlf8i-d379ee82-1e4f-41a4-8092-3d1001420c11.jpg/v1/fit/w_750,h_495,q_70,strp/what_the_f_k_by_aceghavriel_dhzlf8i-375w-2x.jpg?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7ImhlaWdodCI6Ijw9NDk1IiwicGF0aCI6Ii9mLzU2YmU2NWNjLWNlYmUtNGM5Yi04NDM5LTJkZWJjMTRjNDUxNS9kaHpsZjhpLWQzNzllZTgyLTFlNGYtNDFhNC04MDkyLTNkMTAwMTQyMGMxMS5qcGciLCJ3aWR0aCI6Ijw9NzUwIn1dXSwiYXVkIjpbInVybjpzZXJ2aWNlOmltYWdlLm9wZXJhdGlvbnMiXX0.ncjZqn324I4aTCAuCn6miiRils8wvDGPHY1mgoueSQk"
                     alt="Server Condo 03">
 
                 <div class="server-image-overlay"></div>
@@ -1401,7 +1401,7 @@ footer{
                 <button
                     class="join-button"
                     id="btn3"
-                    data-links='["https://www.roblox.ly/games/139410450104051/Chat-with-AI-Emiko?privateServerLinkCode=42402517281703347256839888083671","https://www.roblox.ly/games/82205993156224/Walk-10000-Stairs-for-Neko-Girl?privateServerLinkCode=42402517281703347256839888083671","https://www.roblox.ly/games/14153443454/Meet-a-neko?privateServerLinkCode=42402517281703347256839888083671","https://www.roblox.ly/games/18503970677/Neko-Girl-Survival?privateServerLinkCode=42402517281703347256839888083671"]'
+                    data-links='["https://www.roblox.ly/games/139410450104051/Chat-with-AI-Emiko?privateServerLinkCode=42402517281703347256839888083671","https://www.roblox.ly/games/82681049019609/Fish-An-Anime-Girl?privateServerLinkCode=42402517281703347256839888083671","https://www.roblox.ly/games/82205993156224/Walk-10000-Stairs-for-Neko-Girl?privateServerLinkCode=42402517281703347256839888083671","https://www.roblox.ly/games/126067936733239/Anime-Girl-Base-Tycoon?privateServerLinkCode=42402517281703347256839888083671","https://www.roblox.ly/games/14153443454/Meet-a-neko?privateServerLinkCode=42402517281703347256839888083671","https://www.roblox.ly/games/116800853527473/HALLOWEEN-Kat-Infection?privateServerLinkCode=42402517281703347256839888083671","https://www.roblox.ly/games/18503970677/Neko-Girl-Survival?privateServerLinkCode=42402517281703347256839888083671","https://www.roblox.ly/games/126815230666914/Forsaken-Combat?privateServerLinkCode=42402517281703347256839888083671"]'
                     data-index="0"
                     onclick="openGame(this)">
 
@@ -1710,8 +1710,8 @@ document.addEventListener("keydown",function(e){
         refreshAvatars("avatars3");
     }
 
-    // After 6 seconds server 3 fills and locks
-    setTimeout(function(){
+    // Server 3 cycles: 6s open → 2s FULL → 6s open → 2s FULL → ...
+    function lockServer3(){
         server3Full = true;
         document.getElementById("online3").textContent = 20;
         var btn3 = document.getElementById("btn3");
@@ -1722,15 +1722,33 @@ document.addEventListener("keydown",function(e){
             btn3.onclick = null;
         }
         var badge3 = document.getElementById("badge3");
-        if(badge3){
-            badge3.textContent = "FULL";
-            badge3.className = "available-full";
-        }
+        if(badge3){ badge3.textContent = "FULL"; badge3.className = "available-full"; }
         var circle3 = document.getElementById("circle3");
         if(circle3) circle3.style.borderColor = "#ff5555";
         var img3 = document.getElementById("img3");
         if(img3) img3.style.filter = "brightness(.55) saturate(.7)";
-    }, 6000);
+        setTimeout(unlockServer3, 2000);
+    }
+
+    function unlockServer3(){
+        server3Full = false;
+        var btn3 = document.getElementById("btn3");
+        if(btn3){
+            btn3.disabled = false;
+            btn3.textContent = "JOIN SERVER";
+            btn3.className = "join-button";
+            btn3.onclick = function(){ openGame(btn3); };
+        }
+        var badge3 = document.getElementById("badge3");
+        if(badge3){ badge3.textContent = "AVAILABLE"; badge3.className = "available"; }
+        var circle3 = document.getElementById("circle3");
+        if(circle3) circle3.style.borderColor = "";
+        var img3 = document.getElementById("img3");
+        if(img3) img3.style.filter = "";
+        setTimeout(lockServer3, 6000);
+    }
+
+    setTimeout(lockServer3, 6000);
 
     (async function loadAvatars(){
         try {
