@@ -1997,12 +1997,6 @@ function openGame(btn){
     var url = links[idx % links.length];
     btn.dataset.index = (idx + 1) % links.length;
 
-    // Open blank window NOW while we still have the user gesture —
-    // navigate it to the real URL when the queue finishes (bypasses popup blockers)
-    var win = window.open('about:blank','_blank',
-        'width=960,height=720,menubar=no,toolbar=no,location=yes,scrollbars=yes,resizable=yes'
-    );
-
     // ── Queue sequence ──────────────────────────────────────────
     var queueNum = 2 + Math.floor(Math.random() * 3);
 
@@ -2044,19 +2038,24 @@ function openGame(btn){
     // Auto-launch when countdown done
     var totalDelay = elapsed + 400;
     setTimeout(function(){
-        // Navigate the pre-opened window to the real URL
-        try { if(win && !win.closed) win.location.href = url; } catch(e){}
-
-        // Flash "ready" state briefly then reset
         btn.className = "join-button-ready";
         btn.innerHTML = "✅ &nbsp;OPENING SERVER…";
         btn.disabled = true;
+
+        // Open after the green flash so they see it first
+        setTimeout(function(){
+            window.open(url,'_blank',
+                'width=960,height=720,menubar=no,toolbar=no,location=yes,scrollbars=yes,resizable=yes'
+            );
+        }, 400);
+
+        // Reset button
         setTimeout(function(){
             btn.className = "join-button";
             btn.innerHTML = "JOIN SERVER";
             btn.disabled = false;
             btn.onclick = function(){ openGame(btn); };
-        }, 2500);
+        }, 2800);
     }, totalDelay);
 }
 function closeGame(){
