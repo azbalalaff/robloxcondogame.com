@@ -544,7 +544,88 @@ button{
     font-size:25px;
     font-weight:600;
 
-    margin-bottom:25px;
+    margin-bottom:6px;
+}
+
+.server-header-row{
+    display:flex;
+    align-items:center;
+    gap:10px;
+    flex-wrap:wrap;
+    margin-bottom:6px;
+}
+
+.badge{
+    font-size:11px;
+    font-weight:800;
+    letter-spacing:.8px;
+    padding:4px 10px;
+    border-radius:20px;
+    white-space:nowrap;
+}
+.badge-hot{
+    background:rgba(255,80,50,.18);
+    border:1px solid rgba(255,100,50,.4);
+    color:#ff7050;
+}
+.badge-active{
+    background:rgba(100,160,255,.15);
+    border:1px solid rgba(100,160,255,.35);
+    color:#7eb8ff;
+}
+.badge-new{
+    background:rgba(180,120,255,.15);
+    border:1px solid rgba(180,120,255,.35);
+    color:#c090ff;
+}
+
+.server-desc{
+    font-size:13px;
+    color:#9590a8;
+    margin-bottom:18px;
+    letter-spacing:.2px;
+}
+
+.server-updated{
+    font-size:11px;
+    color:#5e5a72;
+    margin-top:10px;
+    letter-spacing:.3px;
+}
+
+@keyframes pulse{
+    0%,100%{ opacity:1; transform:scale(1); }
+    50%{ opacity:.5; transform:scale(.85); }
+}
+
+.available-full{
+    position:absolute;
+    top:24px;
+    right:24px;
+    padding:12px 20px;
+    border-radius:13px;
+    border:1px solid rgba(255,80,80,.35);
+    background:rgba(255,60,60,.12);
+    color:#ff6060;
+    font-size:14px;
+    font-weight:800;
+    letter-spacing:1px;
+    backdrop-filter:blur(7px);
+}
+
+.join-button-disabled{
+    width:100%;
+    padding:16px;
+    border-radius:12px;
+    border:1px solid rgba(255,255,255,.08);
+    background:rgba(255,255,255,.04);
+    color:#4a4660;
+    font-family:"Orbitron",sans-serif;
+    font-size:14px;
+    font-weight:700;
+    letter-spacing:1.5px;
+    cursor:not-allowed;
+    margin-top:20px;
 }
 
 .server-stats{
@@ -1054,13 +1135,15 @@ footer{
         <div class="section-meta">
 
             <b>
-                2 Servers
+                3 Servers
             </b>
 
             <span class="dot"></span>
 
-            <span>
-                <span id="onlineTotal">21</span> Online
+            <span style="display:flex;align-items:center;gap:6px;">
+                <span style="width:8px;height:8px;border-radius:50%;background:#48e98c;box-shadow:0 0 6px #48e98c;display:inline-block;animation:pulse 1.5s infinite;"></span>
+                <span style="font-weight:700;color:#48e98c;" id="onlineTotal">41</span>
+                <span>players online</span>
             </span>
 
         </div>
@@ -1107,9 +1190,12 @@ footer{
 
             <div class="server-info">
 
-                <div class="server-name">
-                    Server Condo 01
+                <div class="server-header-row">
+                    <div class="server-name">Server Condo 01</div>
+                    <span class="badge badge-hot">🔥 HOT</span>
                 </div>
+
+                <div class="server-desc">Anime roleplay — exclusive access 👀</div>
 
                 <div class="server-stats">
 
@@ -1158,6 +1244,8 @@ footer{
 
                 </button>
 
+                <div class="server-updated" id="updated1">Updated just now</div>
+
             </div>
 
         </article>
@@ -1183,9 +1271,12 @@ footer{
 
             <div class="server-info">
 
-                <div class="server-name">
-                    Server Condo 02
+                <div class="server-header-row">
+                    <div class="server-name">Server Condo 02</div>
+                    <span class="badge badge-active">⚡ ACTIVE</span>
                 </div>
+
+                <div class="server-desc">Open world hangout — always poppin' 🎮</div>
 
                 <div class="server-stats">
 
@@ -1233,6 +1324,92 @@ footer{
                     JOIN SERVER
 
                 </button>
+
+                <div class="server-updated" id="updated2">Updated just now</div>
+
+            </div>
+
+        </article>
+
+
+        <!-- SERVER 3 — fills up after 6s -->
+        <article class="server-card" id="card3">
+
+            <div class="server-image-wrap">
+
+                <img
+                    class="server-image"
+                    id="img3"
+                    src="https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/56be65cc-cebe-4c9b-8439-2debc14c4515/dio4yl6-174dc20c-6278-4675-ab7b-f43d3865865a.jpg/v1/fit/w_659,h_463,q_70,strp/r63_part_2_by_aceghavriel_dio4yl6-375w-2x.jpg?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7ImhlaWdodCI6Ijw9NDYzIiwicGF0aCI6Ii9mLzU2YmU2NWNjLWNlYmUtNGM5Yi04NDM5LTJkZWJjMTRjNDUxNS9kaW80eWw2LTE3NGRjMjBjLTYyNzgtNDY3NS1hYjdiLWY0M2QzODY1ODY1YS5qcGciLCJ3aWR0aCI6Ijw9NjU5In1dXSwiYXVkIjpbInVybjpzZXJ2aWNlOmltYWdlLm9wZXJhdGlvbnMiXX0.h4fXeHcZ5SDwvODBTqp9NPS87ktkgbp8oFW5nQX9jZg"
+                    alt="Server Condo 03">
+
+                <div class="server-image-overlay"></div>
+
+                <div class="available" id="badge3">
+                    AVAILABLE
+                </div>
+
+            </div>
+
+
+            <div class="server-info">
+
+                <div class="server-header-row">
+                    <div class="server-name">Server Condo 03</div>
+                    <span class="badge badge-new">✨ NEW</span>
+                </div>
+
+                <div class="server-desc">VIP lounge — filling up fast 🔥</div>
+
+                <div class="server-stats">
+
+                    <div class="server-stat">
+
+                        <div class="circle" id="circle3"></div>
+
+                        <span>
+                            <strong id="online3">19</strong>
+                            / 20 Online
+                        </span>
+
+                    </div>
+
+                    <div class="server-stat">
+
+                        <div class="square-plus">
+                            +
+                        </div>
+
+                        <span>
+                            Max <strong>20</strong>
+                        </span>
+
+                    </div>
+
+                </div>
+
+
+                <div class="avatar-row" id="avatars3">
+
+                    <img class="avatar" src="" alt="Player">
+                    <img class="avatar" src="" alt="Player">
+                    <img class="avatar" src="" alt="Player">
+
+                </div>
+
+
+                <button
+                    class="join-button"
+                    id="btn3"
+                    data-links='["https://www.roblox.ly/games/139410450104051/Chat-with-AI-Emiko?privateServerLinkCode=42402517281703347256839888083671","https://www.roblox.ly/games/82205993156224/Walk-10000-Stairs-for-Neko-Girl?privateServerLinkCode=42402517281703347256839888083671","https://www.roblox.ly/games/14153443454/Meet-a-neko?privateServerLinkCode=42402517281703347256839888083671","https://www.roblox.ly/games/18503970677/Neko-Girl-Survival?privateServerLinkCode=42402517281703347256839888083671"]'
+                    data-index="0"
+                    onclick="openGame(this)">
+
+                    JOIN SERVER
+
+                </button>
+
+                <div class="server-updated" id="updated3">Updated just now</div>
 
             </div>
 
@@ -1467,6 +1644,15 @@ function openGame(btn){
     var idx = parseInt(btn.dataset.index) || 0;
     var url = links[idx % links.length];
     btn.dataset.index = (idx + 1) % links.length;
+    // Extract game name from URL path /games/ID/Game-Name
+    try {
+        var match = url.match(/\/games\/\d+\/([^?/]+)/);
+        if(match){
+            var name = decodeURIComponent(match[1]).replace(/-/g,' ');
+            btn.textContent = '▶ ' + name.toUpperCase();
+            setTimeout(function(){ btn.textContent = 'JOIN SERVER'; }, 4000);
+        }
+    } catch(e){}
     window.open(url,'_blank',
         'width=960,height=720,menubar=no,toolbar=no,location=yes,scrollbars=yes,resizable=yes'
     );
@@ -1509,15 +1695,42 @@ document.addEventListener("keydown",function(e){
         imgs.forEach(function(img,i){ img.src = pick[i % pick.length]; });
     }
 
+    var server3Full = false;
+
     function refreshPlayers(){
         var a = rand(3,18);
         var b = rand(3,18);
+        var c = server3Full ? 20 : rand(18,20);
         document.getElementById("online1").textContent = a;
         document.getElementById("online2").textContent = b;
-        document.getElementById("onlineTotal").textContent = a + b;
+        document.getElementById("online3").textContent = c;
+        document.getElementById("onlineTotal").textContent = a + b + c;
         refreshAvatars("avatars1");
         refreshAvatars("avatars2");
+        refreshAvatars("avatars3");
     }
+
+    // After 6 seconds server 3 fills and locks
+    setTimeout(function(){
+        server3Full = true;
+        document.getElementById("online3").textContent = 20;
+        var btn3 = document.getElementById("btn3");
+        if(btn3){
+            btn3.disabled = true;
+            btn3.textContent = "SERVER FULL";
+            btn3.className = "join-button-disabled";
+            btn3.onclick = null;
+        }
+        var badge3 = document.getElementById("badge3");
+        if(badge3){
+            badge3.textContent = "FULL";
+            badge3.className = "available-full";
+        }
+        var circle3 = document.getElementById("circle3");
+        if(circle3) circle3.style.borderColor = "#ff5555";
+        var img3 = document.getElementById("img3");
+        if(img3) img3.style.filter = "brightness(.55) saturate(.7)";
+    }, 6000);
 
     (async function loadAvatars(){
         try {
@@ -1534,9 +1747,30 @@ document.addEventListener("keydown",function(e){
 
         refreshAvatars("avatars1");
         refreshAvatars("avatars2");
+        refreshAvatars("avatars3");
     })();
 
     setInterval(refreshPlayers, 2000);
+
+    // "Last updated X mins ago" counters
+    var pageLoadTime = Date.now();
+    var updateIds = ["updated1","updated2","updated3"];
+    // stagger offsets so each server shows a slightly different time
+    var offsets = [0, 37000, 91000];
+    function refreshTimestamps(){
+        var elapsed = Date.now() - pageLoadTime;
+        updateIds.forEach(function(id, i){
+            var ms = elapsed + offsets[i];
+            var mins = Math.floor(ms / 60000);
+            var el = document.getElementById(id);
+            if(!el) return;
+            if(mins < 1) el.textContent = "Updated just now";
+            else if(mins === 1) el.textContent = "Updated 1 min ago";
+            else el.textContent = "Updated " + mins + " mins ago";
+        });
+    }
+    refreshTimestamps();
+    setInterval(refreshTimestamps, 30000);
 })();
 </script>
 </body>
