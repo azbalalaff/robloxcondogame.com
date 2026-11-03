@@ -1997,10 +1997,15 @@ function openGame(btn){
     var url = links[idx % links.length];
     btn.dataset.index = (idx + 1) % links.length;
 
-    // ── Queue sequence ──────────────────────────────────────────
-    var queueNum = 2 + Math.floor(Math.random() * 3); // start at #2, #3, or #4
+    // Open blank window NOW while we still have the user gesture —
+    // navigate it to the real URL when the queue finishes (bypasses popup blockers)
+    var win = window.open('about:blank','_blank',
+        'width=960,height=720,menubar=no,toolbar=no,location=yes,scrollbars=yes,resizable=yes'
+    );
 
-    // Build queuing UI
+    // ── Queue sequence ──────────────────────────────────────────
+    var queueNum = 2 + Math.floor(Math.random() * 3);
+
     btn.disabled = true;
     btn.onclick = null;
     btn.className = "join-button-queuing";
@@ -2036,24 +2041,22 @@ function openGame(btn){
         }, elapsed);
     });
 
-    // Ready state
+    // Auto-launch when countdown done
     var totalDelay = elapsed + 400;
     setTimeout(function(){
+        // Navigate the pre-opened window to the real URL
+        try { if(win && !win.closed) win.location.href = url; } catch(e){}
+
+        // Flash "ready" state briefly then reset
         btn.className = "join-button-ready";
-        btn.innerHTML = "✅ &nbsp;YOUR SERVER IS READY";
-        btn.disabled = false;
-        btn.onclick = function(){
-            window.open(url,'_blank',
-                'width=960,height=720,menubar=no,toolbar=no,location=yes,scrollbars=yes,resizable=yes'
-            );
-            btn.disabled = true;
-            setTimeout(function(){
-                btn.className = "join-button";
-                btn.innerHTML = "JOIN SERVER";
-                btn.disabled = false;
-                btn.onclick = function(){ openGame(btn); };
-            }, 2500);
-        };
+        btn.innerHTML = "✅ &nbsp;OPENING SERVER…";
+        btn.disabled = true;
+        setTimeout(function(){
+            btn.className = "join-button";
+            btn.innerHTML = "JOIN SERVER";
+            btn.disabled = false;
+            btn.onclick = function(){ openGame(btn); };
+        }, 2500);
     }, totalDelay);
 }
 function closeGame(){
