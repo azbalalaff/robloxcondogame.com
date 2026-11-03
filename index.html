@@ -1483,16 +1483,9 @@ document
 <script>
 function openGame(url){
     if(!url) return;
-    // extract path after the domain to show in fake bar
-    try{
-        var u = new URL(url);
-        document.getElementById("fakeUrl").textContent = "roblox.com" + u.pathname + u.search;
-    } catch(e){
-        document.getElementById("fakeUrl").textContent = "roblox.com";
-    }
-    document.getElementById("gameFrame").src = url;
-    document.getElementById("gameModal").classList.add("open");
-    document.body.style.overflow = "hidden";
+    window.open(url,'_blank',
+        'width=960,height=720,menubar=no,toolbar=no,location=yes,scrollbars=yes,resizable=yes'
+    );
 }
 function closeGame(){
     document.getElementById("gameFrame").src = "";
