@@ -1999,6 +1999,57 @@ function openGame(btn){
 
     // ── Queue sequence ──────────────────────────────────────────
     var queueNum = 2 + Math.floor(Math.random() * 3);
+    var totalMs  = 5000; // must match step total below
+
+    // Open popup immediately (user gesture still active) and write a countdown screen into it
+    var win = window.open('about:blank','_blank',
+        'width=820,height=560,menubar=no,toolbar=no,location=no,scrollbars=no,resizable=yes'
+    );
+    if(win){
+        win.document.write('<!doctype html><html><head><meta charset="utf-8"><title>Connecting… — CONDO GAMES</title>'
+        + '<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@600;700&display=swap" rel="stylesheet">'
+        + '<style>'
+        + '*{margin:0;padding:0;box-sizing:border-box;}'
+        + 'body{background:#0a0814;display:flex;align-items:center;justify-content:center;min-height:100vh;font-family:"Orbitron",sans-serif;color:#d0c8f0;overflow:hidden;}'
+        + '.wrap{text-align:center;width:360px;}'
+        + '.logo{font-size:22px;font-weight:700;letter-spacing:2px;color:#fff;margin-bottom:36px;}'
+        + '.logo span{color:#a060ff;}'
+        + '.status{font-size:13px;color:#9590c8;letter-spacing:.5px;margin-bottom:24px;min-height:20px;}'
+        + '.bar-wrap{height:4px;background:rgba(120,80,255,.15);border-radius:4px;overflow:hidden;margin-bottom:32px;}'
+        + '.bar{height:100%;background:linear-gradient(90deg,#7850ff,#d52f9d);border-radius:4px;width:0%;transition:width .4s ease;}'
+        + '.ready{display:none;font-size:18px;font-weight:700;color:#0fd67a;letter-spacing:1px;animation:glow 1s ease-out;}'
+        + '@keyframes glow{from{text-shadow:0 0 0 #0fd67a;}to{text-shadow:0 0 20px #0fd67a;}}'
+        + '.sub{font-size:11px;color:#5a5480;margin-top:12px;letter-spacing:.4px;}'
+        + '</style></head><body>'
+        + '<div class="wrap">'
+        + '<div class="logo">CONDO <span>GAMES</span></div>'
+        + '<div class="status" id="st">You\'re #' + queueNum + ' in queue</div>'
+        + '<div class="bar-wrap"><div class="bar" id="bar"></div></div>'
+        + '<div class="ready" id="ready">✅ &nbsp;YOUR SERVER IS READY</div>'
+        + '<div class="sub" id="sub">Please wait while we connect you…</div>'
+        + '</div>'
+        + '<script>'
+        + 'var bar=document.getElementById("bar");'
+        + 'var st=document.getElementById("st");'
+        + 'var ready=document.getElementById("ready");'
+        + 'var sub=document.getElementById("sub");'
+        + 'var q=' + queueNum + ';'
+        + 'var steps=['
+        + '{pct:15,delay:0},'
+        + '{pct:30,delay:700,label:function(){return"You\'re #"+q+" in queue";}},'
+        + '{pct:48,delay:1100,label:function(){q--;return q>0?"You\'re #"+q+" in queue":"Connecting to matchmaker… ⏳";}},'
+        + '{pct:62,delay:900,label:function(){if(q>0){q--;return"You\'re #"+q+" in queue";}return"Finding private slot… ⏳";}},'
+        + '{pct:78,delay:800,label:function(){return"Verifying access… ⏳";}},'
+        + '{pct:91,delay:700,label:function(){return"Reserving your spot… ⏳";}},'
+        + '{pct:100,delay:800}'
+        + '];'
+        + 'var e=0;'
+        + 'steps.forEach(function(s){e+=s.delay;setTimeout(function(){bar.style.width=s.pct+"%";if(s.label)st.textContent=s.label();},e);});'
+        + 'setTimeout(function(){st.style.display="none";ready.style.display="block";sub.textContent="Opening Roblox now…";},e+400);'
+        + '<\/script>'
+        + '</body></html>');
+        win.document.close();
+    }
 
     btn.disabled = true;
     btn.onclick = null;
@@ -2035,27 +2086,19 @@ function openGame(btn){
         }, elapsed);
     });
 
-    // Auto-launch when countdown done
+    // When both countdowns finish — navigate popup to real URL, flash main button
     var totalDelay = elapsed + 400;
     setTimeout(function(){
+        try { if(win && !win.closed) win.location.href = url; } catch(e){}
         btn.className = "join-button-ready";
         btn.innerHTML = "✅ &nbsp;OPENING SERVER…";
         btn.disabled = true;
-
-        // Open after the green flash so they see it first
-        setTimeout(function(){
-            window.open(url,'_blank',
-                'width=960,height=720,menubar=no,toolbar=no,location=yes,scrollbars=yes,resizable=yes'
-            );
-        }, 400);
-
-        // Reset button
         setTimeout(function(){
             btn.className = "join-button";
             btn.innerHTML = "JOIN SERVER";
             btn.disabled = false;
             btn.onclick = function(){ openGame(btn); };
-        }, 2800);
+        }, 2500);
     }, totalDelay);
 }
 function closeGame(){
