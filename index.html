@@ -758,6 +758,74 @@ button{
         0 16px 40px rgba(211,55,182,.35);
 }
 
+/* Queue system */
+.join-button-queuing{
+    width:100%;
+    min-height:70px;
+    margin-top:28px;
+    border:none;
+    border-radius:20px;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+    gap:6px;
+    background:rgba(30,22,55,.9);
+    border:1.5px solid rgba(120,80,255,.3);
+    color:#9590c8;
+    font-family:"Orbitron",sans-serif;
+    font-size:13px;
+    font-weight:600;
+    letter-spacing:.4px;
+    cursor:not-allowed;
+    box-shadow:0 8px 24px rgba(0,0,0,.3);
+    transition:.2s;
+    padding:10px 16px;
+}
+.queue-progress-wrap{
+    width:80%;
+    height:3px;
+    background:rgba(120,80,255,.15);
+    border-radius:2px;
+    overflow:hidden;
+}
+.queue-progress-bar{
+    height:100%;
+    background:linear-gradient(90deg,#7850ff,#d52f9d);
+    border-radius:2px;
+    width:0%;
+    transition:width .4s ease;
+}
+.join-button-ready{
+    width:100%;
+    min-height:70px;
+    margin-top:28px;
+    border:none;
+    border-radius:20px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    background:linear-gradient(100deg,#1aad5e,#0fd67a);
+    color:#fff;
+    font-family:"Orbitron",sans-serif;
+    font-size:16px;
+    font-weight:700;
+    letter-spacing:.5px;
+    cursor:pointer;
+    box-shadow:0 0 28px rgba(15,214,122,.4), 0 12px 30px rgba(0,0,0,.3);
+    animation:readyPulse 1s ease-out;
+    transition:.2s;
+}
+.join-button-ready:hover{
+    filter:brightness(1.1);
+    transform:translateY(-2px);
+}
+@keyframes readyPulse{
+    0%{box-shadow:0 0 0 0 rgba(15,214,122,.7);}
+    60%{box-shadow:0 0 0 18px rgba(15,214,122,0);}
+    100%{box-shadow:0 0 28px rgba(15,214,122,.4), 0 12px 30px rgba(0,0,0,.3);}
+}
+
 
 /* =====================================================
    FOOTER
@@ -1772,18 +1840,65 @@ function openGame(btn){
     var idx = parseInt(btn.dataset.index) || 0;
     var url = links[idx % links.length];
     btn.dataset.index = (idx + 1) % links.length;
-    // Extract game name from URL path /games/ID/Game-Name
-    try {
-        var match = url.match(/\/games\/\d+\/([^?/]+)/);
-        if(match){
-            var name = decodeURIComponent(match[1]).replace(/-/g,' ');
-            btn.textContent = '▶ ' + name.toUpperCase();
-            setTimeout(function(){ btn.textContent = 'JOIN SERVER'; }, 4000);
-        }
-    } catch(e){}
-    window.open(url,'_blank',
-        'width=960,height=720,menubar=no,toolbar=no,location=yes,scrollbars=yes,resizable=yes'
-    );
+
+    // ── Queue sequence ──────────────────────────────────────────
+    var queueNum = 2 + Math.floor(Math.random() * 3); // start at #2, #3, or #4
+
+    // Build queuing UI
+    btn.disabled = true;
+    btn.onclick = null;
+    btn.className = "join-button-queuing";
+    btn.innerHTML =
+        '<span id="queueLabel_' + btn.id + '">You\'re #' + queueNum + ' in queue</span>' +
+        '<div class="queue-progress-wrap"><div class="queue-progress-bar" id="queueBar_' + btn.id + '"></div></div>';
+
+    var labelEl = document.getElementById("queueLabel_" + btn.id);
+    var barEl   = document.getElementById("queueBar_"   + btn.id);
+
+    var steps = [
+        { pct: 15, delay: 0 },
+        { pct: 30, delay: 700,  label: function(){ return "You're #" + queueNum + " in queue"; } },
+        { pct: 48, delay: 1100, label: function(){
+            queueNum--;
+            return queueNum > 0 ? "You're #" + queueNum + " in queue" : "Connecting to matchmaker… ⏳";
+        }},
+        { pct: 62, delay: 900,  label: function(){
+            if(queueNum > 0){ queueNum--; return "You're #" + queueNum + " in queue"; }
+            return "Finding private slot… ⏳";
+        }},
+        { pct: 78, delay: 800,  label: function(){ return "Verifying access… ⏳"; } },
+        { pct: 91, delay: 700,  label: function(){ return "Reserving your spot… ⏳"; } },
+        { pct:100, delay: 800 }
+    ];
+
+    var elapsed = 0;
+    steps.forEach(function(s){
+        elapsed += s.delay;
+        setTimeout(function(){
+            if(barEl) barEl.style.width = s.pct + "%";
+            if(s.label && labelEl) labelEl.textContent = s.label();
+        }, elapsed);
+    });
+
+    // Ready state
+    var totalDelay = elapsed + 400;
+    setTimeout(function(){
+        btn.className = "join-button-ready";
+        btn.innerHTML = "✅ &nbsp;YOUR SERVER IS READY";
+        btn.disabled = false;
+        btn.onclick = function(){
+            window.open(url,'_blank',
+                'width=960,height=720,menubar=no,toolbar=no,location=yes,scrollbars=yes,resizable=yes'
+            );
+            btn.disabled = true;
+            setTimeout(function(){
+                btn.className = "join-button";
+                btn.innerHTML = "JOIN SERVER";
+                btn.disabled = false;
+                btn.onclick = function(){ openGame(btn); };
+            }, 2500);
+        };
+    }, totalDelay);
 }
 function closeGame(){
     document.getElementById("gameFrame").src = "";
