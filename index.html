@@ -1970,7 +1970,33 @@ document
     border:none;
     display:block;
 }
+
+/* Devtools protection overlay */
+#devtools-shield{
+    display:none;
+    position:fixed;
+    inset:0;
+    z-index:999999;
+    background:rgba(6,4,16,.97);
+    backdrop-filter:blur(18px);
+    align-items:center;
+    justify-content:center;
+    flex-direction:column;
+    gap:16px;
+    text-align:center;
+}
+#devtools-shield.active{ display:flex; }
+#devtools-shield .shield-icon{ font-size:52px; }
+#devtools-shield h2{ font-family:"Orbitron",sans-serif; font-size:20px; color:#fff; letter-spacing:1px; }
+#devtools-shield p{ font-size:13px; color:#7068a0; max-width:300px; line-height:1.7; }
 </style>
+
+<!-- DevTools shield overlay -->
+<div id="devtools-shield">
+    <div class="shield-icon">🔒</div>
+    <h2>PROTECTED CONTENT</h2>
+    <p>Developer tools detected.<br>Close DevTools to continue accessing this site.</p>
+</div>
 
 <div id="gameModal">
     <div class="modal-shell">
@@ -2528,6 +2554,57 @@ document.addEventListener("keydown",function(e){
             chip.classList.add("visible");
         }, 2500);
     }
+})();
+</script>
+
+<script>
+// ── Site protection ────────────────────────────────────────────────
+(function(){
+    var shield = document.getElementById("devtools-shield");
+
+    // 1. Disable right-click
+    document.addEventListener("contextmenu", function(e){
+        e.preventDefault();
+        // Show a brief "protected" toast
+        var container = document.getElementById("toast-container");
+        if(container){
+            var t = document.createElement("div");
+            t.className = "toast";
+            t.innerHTML = '<span style="font-size:16px;">🔒</span><span><b style="color:#d8d4f0">Inspect Disabled</b> · Protected Content</span>';
+            container.appendChild(t);
+            setTimeout(function(){ t.classList.add("hide"); setTimeout(function(){ if(t.parentNode) t.parentNode.removeChild(t); },320); }, 2000);
+        }
+    });
+
+    // 2. Block devtools keyboard shortcuts
+    document.addEventListener("keydown", function(e){
+        // F12
+        if(e.key === "F12"){ e.preventDefault(); return false; }
+        // Ctrl+Shift+I / Ctrl+Shift+J / Ctrl+Shift+C
+        if(e.ctrlKey && e.shiftKey && ["I","i","J","j","C","c"].indexOf(e.key) > -1){ e.preventDefault(); return false; }
+        // Ctrl+U (view source)
+        if(e.ctrlKey && (e.key === "u" || e.key === "U")){ e.preventDefault(); return false; }
+        // Ctrl+S (save page)
+        if(e.ctrlKey && (e.key === "s" || e.key === "S")){ e.preventDefault(); return false; }
+    });
+
+    // 3. DevTools size detection — fires when devtools panel takes up window space
+    var threshold = 160;
+    function checkDevTools(){
+        var widthDiff  = window.outerWidth  - window.innerWidth;
+        var heightDiff = window.outerHeight - window.innerHeight;
+        var open = widthDiff > threshold || heightDiff > threshold;
+        if(shield) shield.classList.toggle("active", open);
+    }
+    setInterval(checkDevTools, 800);
+    checkDevTools();
+
+    // 4. console.clear loop — wipes anything logged
+    setInterval(function(){ try{ console.clear(); }catch(e){} }, 1000);
+
+    // 5. Disable text selection on the page
+    document.body.style.userSelect = "none";
+    document.body.style.webkitUserSelect = "none";
 })();
 </script>
 </body>
