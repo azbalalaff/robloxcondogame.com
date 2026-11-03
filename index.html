@@ -1485,17 +1485,23 @@ document.addEventListener("keydown",function(e){
 (function(){
     function rand(min,max){ return Math.floor(Math.random()*(max-min+1))+min; }
 
-    // pool of roblox-style avatars via dicebear pixel-art
-    var seeds = ["nova","blaze","pixel","raven","ghost","storm","echo","viper","axe","drift",
-                 "luna","foxy","zara","kai","rex","miko","neon","sky","ash","jade",
-                 "volt","rico","dusk","finn","cruz","lyra","omen","zero","ace","flux"];
+    // real roblox user IDs for headshot thumbnails
+    var userIds = [
+        156,261,698,1214,2470023,55549074,
+        80254237,107945242,2276232032,441537,
+        3032677,7294406,21261128,2041702,
+        22761396,39049691,131397672,288894615,
+        174843139,452916337,189725914,328199,
+        12332784,126950974,51155427,1239238,
+        120373766,48572991,22390898,30842445
+    ];
 
-    function avatarUrl(seed){
-        return "https://api.dicebear.com/9.x/pixel-art/svg?seed="+seed+"&backgroundColor=b6e3f4,c0aede,d1d4f9,ffd5dc,ffdfbf";
+    function avatarUrl(userId){
+        return "https://www.roblox.com/headshot-thumbnail/image?userId="+userId+"&width=150&height=150&format=png";
     }
 
     function shuffled(){
-        var arr = seeds.slice();
+        var arr = userIds.slice();
         for(var i=arr.length-1;i>0;i--){
             var j=Math.floor(Math.random()*(i+1));
             var t=arr[i];arr[i]=arr[j];arr[j]=t;
