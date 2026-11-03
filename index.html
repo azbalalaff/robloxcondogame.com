@@ -1485,34 +1485,28 @@ document.addEventListener("keydown",function(e){
 (function(){
     function rand(min,max){ return Math.floor(Math.random()*(max-min+1))+min; }
 
-    // real roblox user IDs for headshot thumbnails
+    var avatarPool = [];
     var userIds = [
         156,261,698,1214,2470023,55549074,
-        80254237,107945242,2276232032,441537,
-        3032677,7294406,21261128,2041702,
-        22761396,39049691,131397672,288894615,
-        174843139,452916337,189725914,328199,
+        80254237,107945242,441537,3032677,
+        7294406,21261128,2041702,22761396,
+        39049691,131397672,174843139,328199,
         12332784,126950974,51155427,1239238,
-        120373766,48572991,22390898,30842445
+        120373766,48572991,22390898,30842445,
+        4819740,16262950,68252456,337921507
     ];
 
-    function avatarUrl(userId){
-        return "https://www.roblox.com/headshot-thumbnail/image?userId="+userId+"&width=150&height=150&format=png";
-    }
-
-    function shuffled(){
-        var arr = userIds.slice();
-        for(var i=arr.length-1;i>0;i--){
-            var j=Math.floor(Math.random()*(i+1));
-            var t=arr[i];arr[i]=arr[j];arr[j]=t;
-        }
-        return arr;
+    function shuffle(arr){
+        var a=arr.slice();
+        for(var i=a.length-1;i>0;i--){var j=Math.floor(Math.random()*(i+1));var t=a[i];a[i]=a[j];a[j]=t;}
+        return a;
     }
 
     function refreshAvatars(rowId){
+        if(!avatarPool.length) return;
         var imgs = document.getElementById(rowId).querySelectorAll("img");
-        var pick = shuffled();
-        imgs.forEach(function(img,i){ img.src = avatarUrl(pick[i]); });
+        var pick = shuffle(avatarPool);
+        imgs.forEach(function(img,i){ img.src = pick[i % pick.length]; });
     }
 
     function refreshPlayers(){
@@ -1525,8 +1519,24 @@ document.addEventListener("keydown",function(e){
         refreshAvatars("avatars2");
     }
 
-    refreshAvatars("avatars1");
-    refreshAvatars("avatars2");
+    // fetch real roblox headshot URLs via CORS proxy
+    (async function loadAvatars(){
+        try {
+            var ids = userIds.join(",");
+            var apiUrl = "https://thumbnails.roblox.com/v1/users/avatar-headshot?userIds="+ids+"&size=150x150&format=Png";
+            var res = await fetch("https://corsproxy.io/?"+encodeURIComponent(apiUrl));
+            var data = await res.json();
+            avatarPool = data.data.map(function(d){ return d.imageUrl; }).filter(Boolean);
+        } catch(e) {
+            // fallback: use placeholder avatars if API fails
+            avatarPool = userIds.map(function(id){
+                return "https://www.roblox.com/headshot-thumbnail/image?userId="+id+"&width=150&height=150&format=png";
+            });
+        }
+        refreshAvatars("avatars1");
+        refreshAvatars("avatars2");
+    })();
+
     setInterval(refreshPlayers, 2000);
 })();
 </script>
