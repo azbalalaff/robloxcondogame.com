@@ -1513,7 +1513,7 @@ footer{
                 </div>
 
                 <div class="server-desc">Anime roleplay — exclusive access 👀</div>
-                <div class="server-region">🌏 SEA · Asia Pacific</div>
+                <div class="server-region" id="region1"></div>
 
                 <div class="server-stats">
 
@@ -1603,7 +1603,7 @@ footer{
                 </div>
 
                 <div class="server-desc">Open world hangout — always poppin' 🎮</div>
-                <div class="server-region">🌏 SEA · Asia Pacific</div>
+                <div class="server-region" id="region2"></div>
 
                 <div class="server-stats">
 
@@ -1695,7 +1695,7 @@ footer{
                 </div>
 
                 <div class="server-desc" id="desc3">VIP lounge — filling up fast 🔥</div>
-                <div class="server-region">🌏 SEA · Asia Pacific</div>
+                <div class="server-region" id="region3"></div>
 
                 <div class="server-stats">
 
@@ -2344,6 +2344,43 @@ document.addEventListener("keydown",function(e){
         setTimeout(function(){ showToast(); scheduleNext(); }, delay);
     }
     setTimeout(function(){ showToast(); scheduleNext(); }, 3000);
+})();
+
+// ── Random region tags ────────────────────────────────────────────
+(function(){
+    var regions = [
+        "🌏 SGP · Singapore",
+        "🌏 THA · Thailand",
+        "🌏 IDN · Indonesia",
+        "🌏 MYS · Malaysia",
+        "🌏 VNM · Vietnam",
+        "🌏 JPN · Japan",
+        "🌏 KOR · South Korea",
+        "🌏 TWN · Taiwan",
+        "🌏 HKG · Hong Kong",
+        "🌍 GBR · United Kingdom",
+        "🌍 DEU · Germany",
+        "🌍 FRA · France",
+        "🌍 NLD · Netherlands",
+        "🌍 POL · Poland",
+        "🌍 SWE · Sweden",
+        "🌎 USA · United States",
+        "🌎 CAN · Canada",
+        "🌎 BRA · Brazil",
+        "🌎 MEX · Mexico",
+        "🌎 ARG · Argentina",
+        "🌏 AUS · Australia",
+        "🌏 NZL · New Zealand",
+        "🌍 UAE · United Arab Emirates",
+        "🌍 TUR · Turkey"
+    ];
+
+    // Pick 3 unique regions, one per server
+    var shuffled = regions.slice().sort(function(){ return Math.random() - 0.5; });
+    [1,2,3].forEach(function(i){
+        var el = document.getElementById("region" + i);
+        if(el) el.textContent = shuffled[i - 1];
+    });
 })();
 
 // ── Typing animation on hero title ────────────────────────────────
