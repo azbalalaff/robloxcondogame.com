@@ -6,6 +6,17 @@
 
 <title>CONDO GAMES — Private Server Hub</title>
 
+<!-- OG / Social preview -->
+<meta property="og:type" content="website">
+<meta property="og:title" content="CONDO GAMES — Private Server Hub 🔥">
+<meta property="og:description" content="Join exclusive Roblox private servers — anime roleplay, VIP access, always active. 3 servers live now.">
+<meta property="og:image" content="https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/56be65cc-cebe-4c9b-8439-2debc14c4515/dio4yl6-174dc20c-6278-4675-ab7b-f43d3865865a.jpg/v1/fit/w_659,h_463,q_70,strp/r63_part_2_by_aceghavriel_dio4yl6-375w-2x.jpg?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7ImhlaWdodCI6Ijw9NDYzIiwicGF0aCI6Ii9mLzU2YmU2NWNjLWNlYmUtNGM5Yi04NDM5LTJkZWJjMTRjNDUxNS9kaW80eWw2LTE3NGRjMjBjLTYyNzgtNDY3NS1hYjdiLWY0M2QzODY1ODY1YS5qcGciLCJ3aWR0aCI6Ijw9NjU5In1dXSwiYXVkIjpbInVybjpzZXJ2aWNlOmltYWdlLm9wZXJhdGlvbnMiXX0.h4fXeHcZ5SDwvODBTqp9NPS87ktkgbp8oFW5nQX9jZg">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="CONDO GAMES — Private Server Hub 🔥">
+<meta name="twitter:description" content="Join exclusive Roblox private servers — anime roleplay, VIP access, always active. 3 servers live now.">
+<meta name="twitter:image" content="https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/56be65cc-cebe-4c9b-8439-2debc14c4515/dio4yl6-174dc20c-6278-4675-ab7b-f43d3865865a.jpg/v1/fit/w_659,h_463,q_70,strp/r63_part_2_by_aceghavriel_dio4yl6-375w-2x.jpg?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7ImhlaWdodCI6Ijw9NDYzIiwicGF0aCI6Ii9mLzU2YmU2NWNjLWNlYmUtNGM5Yi04NDM5LTJkZWJjMTRjNDUxNS9kaW80eWw2LTE3NGRjMjBjLTYyNzgtNDY3NS1hYjdiLWY0M2QzODY1ODY1YS5qcGciLCJ3aWR0aCI6Ijw9NjU5In1dXSwiYXVkIjpbInVybjpzZXJ2aWNlOmltYWdlLm9wZXJhdGlvbnMiXX0.h4fXeHcZ5SDwvODBTqp9NPS87ktkgbp8oFW5nQX9jZg">
+<meta name="theme-color" content="#7850ff">
+
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700;800;900&family=Inter:wght@400;500;600;700;800;900&display=swap');
 
@@ -990,11 +1001,113 @@ footer{
         height:40px;
     }
 
+    .viewer-ticker{ font-size:12px; }
+    .server-region{ font-size:11px; }
+    #toast-container{ bottom:12px; right:12px; max-width:calc(100vw - 24px); }
+    .toast{ font-size:12px; padding:10px 14px; }
+
     .join-button{
         border-radius:17px;
         min-height:65px;
         font-size:16px;
     }
+}
+
+/* ── VIEWER TICKER ── */
+.viewer-ticker{
+    display:flex;
+    align-items:center;
+    gap:7px;
+    font-size:13px;
+    color:#9590a8;
+    margin-top:10px;
+    margin-bottom:18px;
+    letter-spacing:.2px;
+}
+.viewer-ticker b{ color:#c8c0e0; }
+
+/* ── SERVER REGION ── */
+.server-region{
+    display:inline-flex;
+    align-items:center;
+    gap:5px;
+    font-size:11px;
+    font-weight:600;
+    letter-spacing:.5px;
+    color:#6e69a0;
+    background:rgba(120,80,255,.08);
+    border:1px solid rgba(120,80,255,.18);
+    border-radius:20px;
+    padding:3px 10px;
+    margin-bottom:16px;
+}
+
+/* ── AVATAR ROW — scrollable on small screens ── */
+.avatar-row{
+    overflow-x:auto;
+    scrollbar-width:none;
+    -ms-overflow-style:none;
+}
+.avatar-row::-webkit-scrollbar{ display:none; }
+
+/* ── TOAST NOTIFICATIONS ── */
+#toast-container{
+    position:fixed;
+    bottom:24px;
+    right:24px;
+    z-index:99999;
+    display:flex;
+    flex-direction:column;
+    gap:8px;
+    pointer-events:none;
+}
+.toast{
+    background:rgba(18,14,32,.92);
+    border:1px solid rgba(120,80,255,.35);
+    border-radius:12px;
+    padding:12px 16px;
+    font-size:13px;
+    color:#d8d4f0;
+    display:flex;
+    align-items:center;
+    gap:10px;
+    backdrop-filter:blur(12px);
+    box-shadow:0 4px 24px rgba(0,0,0,.5);
+    animation:toastIn .3s ease-out forwards;
+    max-width:280px;
+    white-space:nowrap;
+    overflow:hidden;
+    text-overflow:ellipsis;
+}
+.toast.hide{
+    animation:toastOut .3s ease-in forwards;
+}
+.toast-avatar{
+    width:28px;
+    height:28px;
+    border-radius:50%;
+    background:rgba(120,80,255,.25);
+    border:1px solid rgba(120,80,255,.4);
+    flex-shrink:0;
+    object-fit:cover;
+}
+@keyframes toastIn{
+    from{ opacity:0; transform:translateX(40px); }
+    to{   opacity:1; transform:translateX(0); }
+}
+@keyframes toastOut{
+    from{ opacity:1; transform:translateX(0); }
+    to{   opacity:0; transform:translateX(40px); }
+}
+
+/* ── COUNT ROLL ANIMATION ── */
+@keyframes countRoll{
+    from{ opacity:0; transform:translateY(-6px); }
+    to{   opacity:1; transform:translateY(0); }
+}
+.count-change{
+    display:inline-block;
+    animation:countRoll .22s ease-out;
 }
 </style>
 </head>
@@ -1150,6 +1263,9 @@ footer{
 
     </div>
 
+    <div class="viewer-ticker">
+        👁 <b id="viewerCount">52</b> people viewing right now
+    </div>
 
     <div style="
         display:flex;
@@ -1196,6 +1312,7 @@ footer{
                 </div>
 
                 <div class="server-desc">Anime roleplay — exclusive access 👀</div>
+                <div class="server-region">🌏 SEA · Asia Pacific</div>
 
                 <div class="server-stats">
 
@@ -1227,6 +1344,8 @@ footer{
 
                 <div class="avatar-row" id="avatars1">
 
+                    <img class="avatar" src="" alt="Player">
+                    <img class="avatar" src="" alt="Player">
                     <img class="avatar" src="" alt="Player">
                     <img class="avatar" src="" alt="Player">
                     <img class="avatar" src="" alt="Player">
@@ -1277,6 +1396,7 @@ footer{
                 </div>
 
                 <div class="server-desc">Open world hangout — always poppin' 🎮</div>
+                <div class="server-region">🌏 SEA · Asia Pacific</div>
 
                 <div class="server-stats">
 
@@ -1308,6 +1428,8 @@ footer{
 
                 <div class="avatar-row" id="avatars2">
 
+                    <img class="avatar" src="" alt="Player">
+                    <img class="avatar" src="" alt="Player">
                     <img class="avatar" src="" alt="Player">
                     <img class="avatar" src="" alt="Player">
                     <img class="avatar" src="" alt="Player">
@@ -1359,7 +1481,8 @@ footer{
                     <span class="badge badge-new">✨ NEW</span>
                 </div>
 
-                <div class="server-desc">VIP lounge — filling up fast 🔥</div>
+                <div class="server-desc" id="desc3">VIP lounge — filling up fast 🔥</div>
+                <div class="server-region">🌏 SEA · Asia Pacific</div>
 
                 <div class="server-stats">
 
@@ -1391,6 +1514,8 @@ footer{
 
                 <div class="avatar-row" id="avatars3">
 
+                    <img class="avatar" src="" alt="Player">
+                    <img class="avatar" src="" alt="Player">
                     <img class="avatar" src="" alt="Player">
                     <img class="avatar" src="" alt="Player">
                     <img class="avatar" src="" alt="Player">
@@ -1462,6 +1587,9 @@ footer{
 
 </a>
 
+
+<!-- TOAST CONTAINER -->
+<div id="toast-container"></div>
 
 <script>
 
@@ -1697,23 +1825,42 @@ document.addEventListener("keydown",function(e){
 
     var server3Full = false;
 
+    function setCount(id, val){
+        var el = document.getElementById(id);
+        if(!el) return;
+        el.textContent = val;
+        el.classList.remove("count-change");
+        void el.offsetWidth;
+        el.classList.add("count-change");
+    }
+
     function refreshPlayers(){
         var a = rand(3,18);
         var b = rand(3,18);
         var c = server3Full ? 20 : rand(18,20);
-        document.getElementById("online1").textContent = a;
-        document.getElementById("online2").textContent = b;
-        document.getElementById("online3").textContent = c;
-        document.getElementById("onlineTotal").textContent = a + b + c;
+        setCount("online1", a);
+        setCount("online2", b);
+        setCount("online3", c);
+        setCount("onlineTotal", a + b + c);
         refreshAvatars("avatars1");
         refreshAvatars("avatars2");
         refreshAvatars("avatars3");
     }
 
-    // Server 3 cycles: 6s open → 2s FULL → 6s open → 2s FULL → ...
+    // Viewer count ticker
+    function refreshViewers(){
+        var v = rand(38, 74);
+        var el = document.getElementById("viewerCount");
+        if(el){ el.textContent = v; }
+    }
+    setInterval(refreshViewers, 5000);
+
+    // Server 3 cycles: 6s open → 2s FULL (with countdown) → repeat
+    var s3cdInterval = null;
+
     function lockServer3(){
         server3Full = true;
-        document.getElementById("online3").textContent = 20;
+        setCount("online3", 20);
         var btn3 = document.getElementById("btn3");
         if(btn3){
             btn3.disabled = true;
@@ -1727,10 +1874,23 @@ document.addEventListener("keydown",function(e){
         if(circle3) circle3.style.borderColor = "#ff5555";
         var img3 = document.getElementById("img3");
         if(img3) img3.style.filter = "brightness(.55) saturate(.7)";
+
+        // Countdown in description
+        var descEl = document.getElementById("desc3");
+        var cd = 2;
+        if(descEl){ descEl.textContent = "Slot opens in " + cd + "s… ⏳"; descEl.style.color = "#ff8060"; cd--; }
+        clearInterval(s3cdInterval);
+        s3cdInterval = setInterval(function(){
+            if(!descEl) return;
+            if(cd >= 0){ descEl.textContent = "Slot opens in " + cd + "s… ⏳"; cd--; }
+            else { clearInterval(s3cdInterval); }
+        }, 1000);
+
         setTimeout(unlockServer3, 2000);
     }
 
     function unlockServer3(){
+        clearInterval(s3cdInterval);
         server3Full = false;
         var btn3 = document.getElementById("btn3");
         if(btn3){
@@ -1745,6 +1905,8 @@ document.addEventListener("keydown",function(e){
         if(circle3) circle3.style.borderColor = "";
         var img3 = document.getElementById("img3");
         if(img3) img3.style.filter = "";
+        var descEl = document.getElementById("desc3");
+        if(descEl){ descEl.textContent = "VIP lounge — filling up fast 🔥"; descEl.style.color = ""; }
         setTimeout(lockServer3, 6000);
     }
 
@@ -1789,6 +1951,83 @@ document.addEventListener("keydown",function(e){
     }
     refreshTimestamps();
     setInterval(refreshTimestamps, 30000);
+})();
+</script>
+
+<script>
+// ── Tab blink when hidden ──────────────────────────────────────────
+(function(){
+    var origTitle = document.title;
+    var blinkTitle = "🔥 Slots available! | CONDO GAMES";
+    var blinkInterval = null;
+    var blinkState = false;
+
+    document.addEventListener("visibilitychange", function(){
+        if(document.hidden){
+            blinkInterval = setInterval(function(){
+                document.title = blinkState ? blinkTitle : origTitle;
+                blinkState = !blinkState;
+            }, 1200);
+        } else {
+            clearInterval(blinkInterval);
+            blinkInterval = null;
+            document.title = origTitle;
+            blinkState = false;
+        }
+    });
+})();
+
+// ── Toast notifications ────────────────────────────────────────────
+(function(){
+    var names = [
+        "xXCoolGuy99Xx","n0va_drift","SpaceKitten22","darkm00n_","y2kvibes",
+        "CloudNine3","AceGamer007","silent_pixel","n3bula_star","grim_reaper_lol",
+        "BlueFoxRun","velvet_chaos","ZephyrBolt","crxwn_","moonlxght_",
+        "StarCrossed88","ecl1pse_","SilverWind44","l0stb0y_","neonpvnk"
+    ];
+    var servers = ["Server 01","Server 02","Server 03"];
+    var avatarColors = ["#7850ff","#ff5580","#50c8ff","#a0ff80","#ffa050"];
+    var nameIdx = Math.floor(Math.random() * names.length);
+
+    function randomInitial(name){ return name[0].toUpperCase(); }
+
+    function showToast(){
+        var container = document.getElementById("toast-container");
+        if(!container) return;
+
+        var name = names[nameIdx % names.length];
+        nameIdx++;
+        var server = servers[Math.floor(Math.random() * servers.length)];
+        var color = avatarColors[Math.floor(Math.random() * avatarColors.length)];
+
+        var toast = document.createElement("div");
+        toast.className = "toast";
+
+        var av = document.createElement("div");
+        av.className = "toast-avatar";
+        av.style.cssText = "background:" + color + "33;border-color:" + color + ";display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;color:" + color + ";";
+        av.textContent = randomInitial(name);
+
+        var msg = document.createElement("span");
+        msg.innerHTML = "<b style='color:#d8d4f0'>" + name + "</b> just joined <b style='color:#a090e0'>" + server + "</b>";
+
+        toast.appendChild(av);
+        toast.appendChild(msg);
+        container.appendChild(toast);
+
+        // Auto-dismiss after 3.5s
+        setTimeout(function(){
+            toast.classList.add("hide");
+            setTimeout(function(){ if(toast.parentNode) toast.parentNode.removeChild(toast); }, 320);
+        }, 3500);
+    }
+
+    // Kick first toast after 3s, then every 4–9s
+    function scheduleNext(){
+        var delay = 4000 + Math.random() * 5000;
+        setTimeout(function(){ showToast(); scheduleNext(); }, delay);
+    }
+    setTimeout(function(){ showToast(); scheduleNext(); }, 3000);
 })();
 </script>
 </body>
